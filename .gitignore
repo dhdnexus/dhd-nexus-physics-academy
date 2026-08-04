@@ -1,0 +1,43 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.egg-info/
+.pytest_cache/
+
+# Virtual Environments
+.venv/
+venv/
+env/
+
+# Manim
+media/
+partial_movie_files/
+
+# VS Code
+.vscode/settings.json
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+desktop.ini
+
+# Logs
+*.log
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Build
+dist/
+build/
+
+# Environment
+.env
+
+# Temporary
+*.tmp
+*.bak
