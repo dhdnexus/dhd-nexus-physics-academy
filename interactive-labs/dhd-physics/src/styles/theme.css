@@ -1,0 +1,32 @@
+@theme {
+
+  /* Brand */
+
+  --color-background: #0B1F3A;
+  --color-surface: #112542;
+
+  --color-primary: #FFFFFF;
+  --color-secondary: #5B3B8C;
+  --color-accent: #D4AF37;
+  --color-vector: #00E5FF;
+
+  /* Status */
+
+  --color-success: #38B000;
+  --color-warning: #FFB703;
+  --color-error: #E63946;
+
+  /* Typography */
+
+  --font-heading: "Segoe UI", sans-serif;
+  --font-body: "Segoe UI", sans-serif;
+
+  /* Radius */
+
+  --radius-card: 18px;
+
+  /* Shadows */
+
+  --shadow-card: 0 12px 30px rgba(0,0,0,.35);
+
+}
