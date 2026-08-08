@@ -1,135 +1,222 @@
-# DHD Nexus Architecture v1.0
+# DHD Nexus Physics Academy
+# Development Architecture v2.0 (Working Draft)
 
-## Vision
+> **Status:** Active Working Document  
+> **Version:** 2.0 (Working Draft)  
+> **Project:** DHD Nexus Physics Academy
 
-DHD Nexus is an integrated undergraduate STEM education platform.
+---
 
-Every lesson is created once and delivered through multiple learning experiences:
+# Vision
 
-- Manim animation
-- Interactive web widgets
+DHD Nexus Physics Academy is the undergraduate physics education platform developed under the DHD Nexus ecosystem.
+
+It combines:
+
+- Scientific visualization
+- Interactive laboratories
+- Manim animations
+- Python computation
 - Marimo notebooks
-- Python calculators
-- Website
-- Quizzes
-- Assignments
-- YouTube videos
+- Live graphs
+- Modern educational technology
 
-The lesson—not the video—is the fundamental unit of the platform.
+to create immersive undergraduate physics learning experiences.
 
 ---
 
-# Core Principles
+# Core Development Philosophy
 
-## 1. Single Source of Truth
+Everything is designed using one simple principle:
 
-Every lesson exists once.
+```
+Lesson
+    ↓
+Components
+    ↓
+Functionality
+```
 
-Everything else is generated from it.
+Students interact with **Lessons**, not isolated software features.
 
----
-
-## 2. Shared SDK
-
-Reusable code never belongs inside a lesson.
-
-Reusable code belongs inside the SDK.
-
----
-
-## 3. Modular Design
-
-Builder
-
-SDK
-
-Lessons
-
-Website
-
-Interactive
-
-Calculators
-
-Research
-
-remain independent modules.
+Every lesson should be complete enough to teach its topic independently.
 
 ---
 
-## 4. Reusability
+# Version 2.0 Architecture
 
-Every component should be reusable across:
-
-- Website
-- YouTube
-- Manim
-- Interactive Widgets
-- Marimo
-- Mobile Apps
+```text
+DHD-Nexus-Physics-Academy
+│
+├── website
+├── docs
+├── builder
+├── sdk
+├── shared-assets
+│
+└── lessons
+     │
+     ├── mechanics
+     │
+     │     ├── kinematics
+     │     │
+     │     │     ├── displacement
+     │     │     ├── velocity
+     │     │     ├── acceleration
+     │     │     └── ...
+     │     │
+     │     ├── dynamics
+     │     └── ...
+     │
+     ├── electricity
+     ├── optics
+     ├── waves
+     └── thermodynamics
+```
 
 ---
 
-## 5. Automation
+# Lesson Architecture
 
-Anything repeated more than twice should eventually be automated.
+Every lesson is self-contained.
+
+Example:
+
+```text
+displacement/
+│
+├── components/
+│      ├── InteractiveLab.tsx
+│      ├── AnimationPanel.tsx
+│      ├── PhysicsPanel.tsx
+│      ├── GraphPanel.tsx
+│      └── ExplanationPanel.tsx
+│
+├── notebook/
+├── sdk/
+├── assets/
+│
+└── index.tsx
+```
+
+Every lesson owns everything required to teach that topic.
 
 ---
 
-## 6. Professional Standards
+# Educational Principle
 
-Every lesson follows the same structure.
+Everything about a lesson stays together.
 
-Every animation follows the same branding.
+This makes lessons:
 
-Every widget follows the same interface.
+- reusable
+- maintainable
+- easy to extend
+- easy to test
 
-Every calculator uses the same physics engine.
+Future lessons follow exactly the same template.
 
 ---
 
-## Architecture
+# Navigation Vision
 
-                    DHD Nexus
+```text
+☰
 
-                         │
+🏠 Home
 
-        ┌────────────────┼─────────────────┐
+────────────────────────
 
-        │                │                 │
+Mechanics
+    ▼
 
-    Website          YouTube         Mobile Apps
+      Kinematics
+          • Displacement
+          • Velocity
+          • Acceleration
+          • Motion Graphs
+          • SUVAT
+          • Projectile Motion
 
-        │                │                 │
+      Dynamics
+          • Newton's Laws
+          • Friction
+          • Momentum
+          • Circular Motion
 
-        └────────────────┼─────────────────┘
+────────────────────────
 
-                         │
+Electricity
 
-                  Shared Content
+Optics
 
-                         │
+Waves
 
-        ┌────────────────┼────────────────┐
+Thermodynamics
 
-        │                │                │
+────────────────────────
 
-      Builder           SDK         Shared Assets
+About
 
-                         │
+Documentation
 
-                    Lesson Package
+Settings
+```
 
-        ┌──────────┬─────────┬──────────┬──────────┐
+This navigation reflects how students naturally explore a physics curriculum.
 
-        │          │         │          │
+---
 
-      Manim    Interactive  Marimo  Calculator
+# Current Development Milestone
 
-        │
+## Lesson 01 — Displacement
 
-        ├── Quiz
+Current Sprint:
 
-        ├── Assignment
+### Sprint A
 
-        └── Website
+Build the complete **Interactive Laboratory**.
+
+```
+Displacement
+
+├── InteractiveLab.tsx   ✅ Current Sprint
+├── AnimationPanel.tsx
+├── PhysicsPanel.tsx
+├── GraphPanel.tsx
+└── ExplanationPanel.tsx
+```
+
+---
+
+# Development Roadmap
+
+Current order of implementation:
+
+1. InteractiveLab
+2. AnimationPanel
+3. PhysicsPanel
+4. GraphPanel
+5. ExplanationPanel
+6. SDK Integration
+7. Manim Integration
+
+Each component must be completed before moving to the next.
+
+---
+
+# Long-Term Goal
+
+Every lesson in DHD Nexus Physics Academy will become a complete digital learning package consisting of:
+
+- Theory
+- Interactive Laboratory
+- Manim Animation
+- Live Physics Panel
+- Graph Panel
+- Python SDK
+- Marimo Notebook
+- Practice Questions
+- Examination Questions
+
+The lesson—not the software component—is the fundamental unit of the platform.
