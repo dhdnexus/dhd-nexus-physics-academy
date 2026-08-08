@@ -3,6 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import AppShell from "../components/layout/AppShell";
 
 import Home from "../pages/Home";
+import PhysicsAcademy from "../pages/physics-academy";
 
 import Displacement from "../pages/mechanics/kinematics/displacement";
 import Velocity from "../pages/mechanics/kinematics/velocity";
@@ -27,6 +28,8 @@ export default function AppRouter() {
           </AppShell>
         }
       />
+
+      <Route path="/physics-academy" element={<PhysicsAcademy />} />
 
       <Route
         path="/mechanics/kinematics/displacement"
