@@ -1,6 +1,8 @@
-import type { ReactNode } from "react";
+import { useState, type ReactNode } from "react";
+import { Menu } from "lucide-react";
 
 import Sidebar from "./Sidebar";
+import NavigationDrawer from "../layout/NavigationDrawer";
 
 type AcademyLayoutProps = {
   title: string;
@@ -13,13 +15,32 @@ export default function AcademyLayout({
   breadcrumb,
   children,
 }: AcademyLayoutProps) {
+  const [drawerOpen, setDrawerOpen] = useState(false);
+
   return (
     <div className="min-h-screen bg-slate-950 text-slate-100">
+      {/* Top-level DHD Nexus nav, reachable from every Academy page.
+          AppShell does NOT wrap this layout — see AppRouter.tsx — so
+          this is the only header rendered on lesson pages. */}
+      <NavigationDrawer
+        open={drawerOpen}
+        onClose={() => setDrawerOpen(false)}
+      />
+
       {/* ================================================== */}
       {/* PHYSICS ACADEMY HEADER                            */}
       {/* ================================================== */}
 
-      <header className="flex h-16 items-center border-b border-slate-800 bg-slate-900 px-6">
+      <header className="flex h-16 items-center gap-4 border-b border-slate-800 bg-slate-900 px-6">
+        <button
+          type="button"
+          onClick={() => setDrawerOpen(true)}
+          className="text-slate-300 transition hover:text-cyan-400"
+          aria-label="Open navigation"
+        >
+          <Menu size={22} />
+        </button>
+
         <div className="flex items-center gap-3">
           <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-cyan-400/10 text-xl text-cyan-400">
             ⚛

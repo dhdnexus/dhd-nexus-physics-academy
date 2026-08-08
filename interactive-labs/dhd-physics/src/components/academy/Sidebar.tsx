@@ -8,7 +8,7 @@ import {
   PanelLeftOpen,
 } from "lucide-react";
 
-import { academyNavigation } from "./academyNavigation";
+import { academyNavigation } from "./AcademyNavigation";
 
 export default function Sidebar() {
   const academy = academyNavigation[0];

@@ -6,6 +6,29 @@ type Props = {
   onClose: () => void;
 };
 
+type SiteSectionStatus = "current" | "coming-soon";
+
+type SiteSection = {
+  title: string;
+  href?: string;
+  status: SiteSectionStatus;
+};
+
+// Top-level DHD Nexus sections. Only sections with a live route and
+// status "current" get a real link — everything else renders disabled
+// with a "Soon" badge, matching the lesson status pattern already used
+// in AcademyNavigation.ts.
+const siteSections: SiteSection[] = [
+  { title: "Physics Academy", href: "/physics-academy", status: "current" },
+  { title: "Research", status: "coming-soon" },
+  { title: "Programming", status: "coming-soon" },
+  { title: "Data Science", status: "coming-soon" },
+  { title: "Data Analysis", status: "coming-soon" },
+  { title: "Development", status: "coming-soon" },
+  { title: "Projects", status: "coming-soon" },
+  { title: "STEM", status: "coming-soon" },
+];
+
 export default function NavigationDrawer({ open, onClose }: Props) {
   const linkClass = ({ isActive }: { isActive: boolean }) =>
     `block rounded-lg px-3 py-2 transition ${
@@ -17,10 +40,7 @@ export default function NavigationDrawer({ open, onClose }: Props) {
   return (
     <>
       {open && (
-        <div
-          onClick={onClose}
-          className="fixed inset-0 bg-black/40 z-40"
-        />
+        <div onClick={onClose} className="fixed inset-0 bg-black/40 z-40" />
       )}
 
       <motion.aside
@@ -30,87 +50,36 @@ export default function NavigationDrawer({ open, onClose }: Props) {
         className="fixed left-0 top-0 h-screen w-80 bg-slate-900 border-r border-slate-700 z-50 overflow-y-auto"
       >
         <div className="p-6">
+          <h2 className="text-xl font-bold text-cyan-400 mb-6">DHD Nexus</h2>
 
-          <h2 className="text-xl font-bold text-cyan-400 mb-6">
-            Mechanics
-          </h2>
+          <nav className="space-y-1">
+            {siteSections.map((section) => {
+              if (section.status === "current" && section.href) {
+                return (
+                  <NavLink
+                    key={section.title}
+                    to={section.href}
+                    onClick={onClose}
+                    className={linkClass}
+                  >
+                    {section.title}
+                  </NavLink>
+                );
+              }
 
-          <details open>
-            <summary className="cursor-pointer font-semibold mb-3">
-              Kinematics
-            </summary>
-
-            <div className="ml-3 space-y-2">
-
-              <NavLink
-                to="/mechanics/kinematics/displacement"
-                onClick={onClose}
-                className={linkClass}
-              >
-                Displacement
-              </NavLink>
-
-              <NavLink
-                to="/mechanics/kinematics/velocity"
-                onClick={onClose}
-                className={linkClass}
-              >
-                Velocity
-              </NavLink>
-
-              <NavLink
-                to="/mechanics/kinematics/acceleration"
-                onClick={onClose}
-                className={linkClass}
-              >
-                Acceleration
-              </NavLink>
-
-              <NavLink
-                to="/mechanics/kinematics/motion-graphs"
-                onClick={onClose}
-                className={linkClass}
-              >
-                Motion Graphs
-              </NavLink>
-
-              <NavLink
-                to="/mechanics/kinematics/suvat"
-                onClick={onClose}
-                className={linkClass}
-              >
-                SUVAT
-              </NavLink>
-
-              <NavLink
-                to="/mechanics/kinematics/projectile-motion"
-                onClick={onClose}
-                className={linkClass}
-              >
-                Projectile Motion
-              </NavLink>
-
-            </div>
-          </details>
-
-          <details className="mt-6">
-            <summary className="cursor-pointer font-semibold">
-              Dynamics
-            </summary>
-          </details>
-
-          <details className="mt-4">
-            <summary className="cursor-pointer font-semibold">
-              Work & Energy
-            </summary>
-          </details>
-
-          <details className="mt-4">
-            <summary className="cursor-pointer font-semibold">
-              Gravitation
-            </summary>
-          </details>
-
+              return (
+                <div
+                  key={section.title}
+                  className="flex items-center justify-between rounded-lg px-3 py-2 text-slate-500 cursor-not-allowed"
+                >
+                  <span>{section.title}</span>
+                  <span className="text-xs uppercase tracking-wide text-slate-600">
+                    Soon
+                  </span>
+                </div>
+              );
+            })}
+          </nav>
         </div>
       </motion.aside>
     </>
