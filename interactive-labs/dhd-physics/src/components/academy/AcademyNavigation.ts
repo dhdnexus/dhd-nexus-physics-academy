@@ -49,7 +49,8 @@ export const academyNavigation: AcademyNavigation[] = [
               {
                 id: "velocity",
                 title: "Velocity",
-                status: "coming-soon",
+                status: "current",
+                href: "/mechanics/kinematics/velocity",
               },
               {
                 id: "acceleration",
@@ -64,7 +65,8 @@ export const academyNavigation: AcademyNavigation[] = [
               {
                 id: "suvat",
                 title: "SUVAT",
-                status: "coming-soon",
+                status: "current",
+                href: "/mechanics/kinematics/suvat",
               },
               {
                 id: "projectile-motion",
