@@ -1,15 +1,6 @@
+import AcademyLayout from "../../../../components/academy/AcademyLayout";
+import MotionGraphsExplorer from "../components/MotionGraphsExplorer";
+
 export default function MotionGraphs() {
-  return (
-    <div className="p-10">
-
-      <h1 className="text-5xl font-bold text-cyan-400">
-        DHD Nexus
-      </h1>
-
-      <p className="mt-5 text-slate-300">
-        Interactive Physics Platform
-      </p>
-
-    </div>
-  );
+  return <AcademyLayout title="Motion Graphs Explorer" breadcrumb={["Home", "Physics Academy", "Mechanics", "Kinematics", "Motion Graphs"]}><MotionGraphsExplorer /></AcademyLayout>;
 }

@@ -1,15 +1,6 @@
+import AcademyLayout from "../../../../components/academy/AcademyLayout";
+import ProjectileExplorer from "../components/ProjectileExplorer";
+
 export default function ProjectileMotion() {
-  return (
-    <div className="p-10">
-
-      <h1 className="text-5xl font-bold text-cyan-400">
-        DHD Nexus
-      </h1>
-
-      <p className="mt-5 text-slate-300">
-        Interactive Physics Platform
-      </p>
-
-    </div>
-  );
+  return <AcademyLayout title="Projectile Motion Lab" breadcrumb={["Home", "Physics Academy", "Mechanics", "Kinematics", "Projectile Motion"]}><ProjectileExplorer /></AcademyLayout>;
 }
