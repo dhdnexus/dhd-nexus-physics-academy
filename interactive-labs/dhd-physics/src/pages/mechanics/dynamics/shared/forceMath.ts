@@ -1,0 +1,16 @@
+export type PhysicsVector = { id:string; name:string; magnitude:number; angleDegrees:number; color?:string };
+export type Components = { x:number; y:number };
+const rad=(d:number)=>d*Math.PI/180;
+export const clamp=(v:number,min:number,max:number)=>Math.min(Math.max(v,min),max);
+export const round=(v:number,p=2)=>{const f=10**p; const r=Math.round((v+Number.EPSILON)*f)/f; return Object.is(r,-0)?0:r;};
+export const components=(v:PhysicsVector):Components=>({x:v.magnitude*Math.cos(rad(v.angleDegrees)),y:v.magnitude*Math.sin(rad(v.angleDegrees))});
+export const sumForces=(forces:PhysicsVector[]):Components=>forces.reduce((s,v)=>{const c=components(v); return {x:s.x+c.x,y:s.y+c.y};},{x:0,y:0});
+export const resultant=(forces:PhysicsVector[])=>{const c=sumForces(forces); return { ...c, magnitude:Math.hypot(c.x,c.y), angleDegrees:(Math.atan2(c.y,c.x)*180/Math.PI+360)%360 };};
+export const accelerationFromForce=(netForce:number,mass:number)=>mass>0?netForce/mass:0;
+export const inclineComponents=(mass:number,g:number,thetaDegrees:number)=>({parallel:mass*g*Math.sin(rad(thetaDegrees)), perpendicular:mass*g*Math.cos(rad(thetaDegrees))});
+export const staticFriction=(applied:number,muS:number,normal:number)=>clamp(Math.abs(applied),0,Math.max(0,muS*normal));
+export const kineticFriction=(muK:number,normal:number)=>Math.max(0,muK*normal);
+export const atwoodAcceleration=(m1:number,m2:number,g=9.81)=>{const den=m1+m2; return den>0?((m2-m1)*g)/den:0;};
+export const atwoodTension=(m1:number,m2:number,g=9.81)=>{const den=m1+m2; return den>0?(2*m1*m2*g)/den:0;};
+export const centripetalAcceleration=(v:number,r:number)=>r>0?(v*v)/r:0;
+export const centripetalForce=(m:number,v:number,r:number)=>m*centripetalAcceleration(v,r);

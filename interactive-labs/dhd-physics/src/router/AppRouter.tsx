@@ -11,6 +11,13 @@ import Acceleration from "../pages/mechanics/kinematics/acceleration";
 import MotionGraphs from "../pages/mechanics/kinematics/motion-graphs";
 import Suvat from "../pages/mechanics/kinematics/suvat";
 import ProjectileMotion from "../pages/mechanics/kinematics/projectile-motion";
+import NewtonsFirstLaw from "../pages/mechanics/dynamics/newtons-first-law";
+import NewtonsSecondLaw from "../pages/mechanics/dynamics/newtons-second-law";
+import NewtonsThirdLaw from "../pages/mechanics/dynamics/newtons-third-law";
+import Friction from "../pages/mechanics/dynamics/friction";
+import CircularMotion from "../pages/mechanics/dynamics/circular-motion";
+import MomentumImpulse from "../pages/mechanics/dynamics/momentum-impulse";
+
 
 export default function AppRouter() {
   return (
@@ -54,6 +61,13 @@ export default function AppRouter() {
         path="/mechanics/kinematics/projectile-motion"
         element={<ProjectileMotion />}
       />
+      <Route path="/mechanics/dynamics/newtons-first-law" element={<NewtonsFirstLaw />} />
+      <Route path="/mechanics/dynamics/newtons-second-law" element={<NewtonsSecondLaw />} />
+      <Route path="/mechanics/dynamics/newtons-third-law" element={<NewtonsThirdLaw />} />
+      <Route path="/mechanics/dynamics/friction" element={<Friction />} />
+      <Route path="/mechanics/dynamics/circular-motion" element={<CircularMotion />} />
+      <Route path="/mechanics/dynamics/momentum-impulse" element={<MomentumImpulse />} />
+
     </Routes>
   );
 }
