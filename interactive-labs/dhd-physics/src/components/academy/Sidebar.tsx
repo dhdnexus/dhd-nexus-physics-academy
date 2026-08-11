@@ -13,7 +13,7 @@ import { academyNavigation } from "./AcademyNavigation";
 export default function Sidebar() {
   const academy = academyNavigation[0];
 
-  const [sidebarOpen, setSidebarOpen] = useState(true);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   const [openModules, setOpenModules] = useState<Record<string, boolean>>(() =>
     Object.fromEntries(

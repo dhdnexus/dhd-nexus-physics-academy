@@ -317,7 +317,7 @@ export default function Home() {
                 />
 
                 <path
-                  className="nexus-flow nexus-flow"
+                  className="nexus-flow"
                   d="M72 300 C150 300 210 300 258 300"
                   stroke="#22d3ee"
                   strokeWidth="2"
@@ -361,9 +361,7 @@ export default function Home() {
                   ====================================================== */}
               <g className="nexus-orbit-slow">
                 <circle cx="300" cy="65" r="5" fill="#22d3ee" opacity="0.85" />
-
                 <circle cx="535" cy="300" r="5" fill="#a855f7" opacity="0.85" />
-
                 <circle cx="300" cy="535" r="5" fill="#22d3ee" opacity="0.85" />
               </g>
 
@@ -372,9 +370,7 @@ export default function Home() {
                   ======================================================== */}
               <g className="nexus-orbit-medium">
                 <circle cx="475" cy="120" r="5" fill="#22d3ee" opacity="0.85" />
-
                 <circle cx="475" cy="480" r="5" fill="#a855f7" opacity="0.85" />
-
                 <circle cx="125" cy="480" r="5" fill="#22d3ee" opacity="0.85" />
               </g>
 
@@ -383,7 +379,6 @@ export default function Home() {
                   ======================================================== */}
               <g className="nexus-orbit-fast">
                 <circle cx="125" cy="120" r="5" fill="#a855f7" opacity="0.85" />
-
                 <circle cx="65" cy="300" r="5" fill="#22d3ee" opacity="0.85" />
               </g>
 
@@ -490,6 +485,25 @@ export default function Home() {
               </g>
             </svg>
           </div>
+        </div>
+      </section>
+
+      {/* ============================================================
+          EXPERIENCE NOTICE
+          ============================================================ */}
+      <section className="px-6 pb-8 sm:px-10 lg:px-16">
+        <div className="mx-auto max-w-4xl rounded-xl border border-slate-800 bg-slate-900/50 px-6 py-5 text-center">
+          <p className="text-sm font-semibold text-cyan-400">
+            Best experienced on a computer
+          </p>
+
+          <p className="mx-auto mt-2 max-w-3xl text-sm leading-6 text-slate-400">
+            DHD Nexus is designed primarily for desktop and laptop screens,
+            where its interactive visualisations, learning interfaces, and
+            connected experiences can be explored as intended. Mobile devices
+            are supported for basic access, but some features and layouts may be
+            limited.
+          </p>
         </div>
       </section>
 

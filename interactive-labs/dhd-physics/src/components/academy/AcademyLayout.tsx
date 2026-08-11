@@ -1,4 +1,5 @@
 import { useState, type ReactNode } from "react";
+import { Link } from "react-router-dom";
 import { Menu } from "lucide-react";
 
 import Sidebar from "./Sidebar";
@@ -90,13 +91,35 @@ export default function AcademyLayout({
                   >
                     {index > 0 && <span className="text-slate-600">›</span>}
 
-                    <span
-                      className={
-                        isLast ? "font-medium text-cyan-400" : "text-slate-400"
-                      }
-                    >
-                      {item}
-                    </span>
+                    {index === 0 ? (
+                      <Link
+                        to="/"
+                        className="text-slate-400 transition hover:text-cyan-400"
+                      >
+                        {item}
+                      </Link>
+                    ) : index === 1 ? (
+                      <Link
+                        to="/physics-academy"
+                        className={
+                          isLast
+                            ? "font-medium text-cyan-400"
+                            : "text-slate-400 transition hover:text-cyan-400"
+                        }
+                      >
+                        {item}
+                      </Link>
+                    ) : (
+                      <span
+                        className={
+                          isLast
+                            ? "font-medium text-cyan-400"
+                            : "text-slate-400"
+                        }
+                      >
+                        {item}
+                      </span>
+                    )}
                   </div>
                 );
               })}

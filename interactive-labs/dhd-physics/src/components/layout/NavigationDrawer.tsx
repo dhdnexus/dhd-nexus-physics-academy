@@ -19,6 +19,7 @@ type SiteSection = {
 // with a "Soon" badge, matching the lesson status pattern already used
 // in AcademyNavigation.ts.
 const siteSections: SiteSection[] = [
+  { title: "Home", href: "/", status: "current" },
   { title: "Physics Academy", href: "/physics-academy", status: "current" },
   { title: "Research", status: "coming-soon" },
   { title: "Programming", status: "coming-soon" },
