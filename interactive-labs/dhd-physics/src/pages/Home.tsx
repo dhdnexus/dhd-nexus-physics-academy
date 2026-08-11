@@ -33,9 +33,8 @@ export default function Home() {
             </p>
 
             <h1 className="max-w-3xl text-6xl font-bold leading-[0.95] tracking-tight text-cyan-400 sm:text-7xl lg:text-8xl">
-              DHD
-              <br />
-              Nexus
+              <span className="block sm:inline">DHD</span>{" "}
+              <span className="block sm:inline">Nexus</span>
             </h1>
 
             <p className="mt-8 max-w-2xl text-2xl font-medium leading-relaxed text-slate-200 sm:text-3xl">
