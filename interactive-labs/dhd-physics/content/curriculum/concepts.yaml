@@ -1,0 +1,23 @@
+# content/curriculum/concepts.yaml
+#
+# A flat registry of known concept/lesson IDs that a Lesson
+# Specification's `prerequisites` or `bridges` fields may reference.
+#
+# This is deliberately NOT a curriculum graph database — it is a plain
+# list the validator checks references against. It only contains the
+# IDs needed by content that actually exists right now (the Acceleration
+# pilot). Add an entry here when a new lesson spec needs to reference a
+# concept that doesn't yet exist as its own full Lesson Specification.
+
+concepts:
+  - id: mechanics.kinematics.acceleration
+    label: Acceleration
+
+  - id: kinematics.velocity
+    label: Velocity
+
+  - id: kinematics.motion-graphs.slope
+    label: "Motion graphs \u2014 reading gradient as rate of change"
+
+  - id: dynamics.newtons-second-law
+    label: "Newton's Second Law"

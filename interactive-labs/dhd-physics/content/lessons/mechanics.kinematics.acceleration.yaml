@@ -1,0 +1,66 @@
+id: mechanics.kinematics.acceleration
+title: Acceleration
+domain: mechanics
+topic: kinematics
+description: >
+  Acceleration as the rate of change of velocity. Connects the signed,
+  direction-aware velocity a student already built in the Velocity
+  lesson to a signed rate of change, and previews Dynamics by asking
+  what causes that change.
+objectives:
+  - "State a = \u0394v / \u0394t and identify its units (m/s\u00b2)."
+  - Determine the sign of acceleration from a described motion.
+  - Distinguish speeding up / slowing down from the sign of acceleration alone.
+  - Read acceleration as the gradient of a velocity-time graph.
+prerequisites:
+  - kinematics.velocity
+  - kinematics.motion-graphs.slope
+stream: concept
+
+artifacts:
+  - id: web-lab-acceleration
+    type: web-lab
+    status: implemented
+    location: /mechanics/kinematics/acceleration
+    label: Acceleration Web Lab
+  - id: manim-acceleration-intro
+    type: manim
+    status: planned
+    label: "Acceleration \u2014 conceptual animation"
+  - id: marimo-acceleration-numeric
+    type: marimo
+    status: planned
+    label: "Acceleration \u2014 numerical exploration notebook"
+
+instruction:
+  predict: >
+    Before touching the sliders, predict whether a negative acceleration
+    will always slow the object down.
+  explore: >
+    Manipulate initial velocity and acceleration and observe the
+    resulting velocity-time and position-time graphs update together in
+    the Web Lab.
+  reflect: >
+    Compare the prediction to what the graphs actually showed,
+    particularly for negative acceleration paired with a positive
+    initial velocity.
+  observe: >
+    Position, velocity, and acceleration readouts update live as the
+    scrubber moves.
+  model: >
+    a = \u0394v / \u0394t, shown alongside the live velocity-time graph
+    gradient.
+
+misconceptions:
+  - acceleration-means-speeding-up
+  - negative-acceleration-always-means-slowing-down
+
+curriculumMaps:
+  ccmas: PHY101
+  traditional: PHYS-101-KIN
+
+bridges:
+  - dynamics.newtons-second-law
+
+difficulty: introductory
+estimatedMinutes: 20

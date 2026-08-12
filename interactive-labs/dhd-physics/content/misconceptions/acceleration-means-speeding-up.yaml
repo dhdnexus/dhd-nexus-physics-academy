@@ -1,0 +1,10 @@
+id: acceleration-means-speeding-up
+statement: >
+  Acceleration means an object is speeding up.
+correction: >
+  Acceleration is any change in velocity — including slowing down or
+  changing direction, not only speeding up. Whether an object speeds up
+  or slows down depends on the sign of acceleration relative to the
+  sign of velocity, not on whether acceleration is present at all.
+relatedLessons:
+  - mechanics.kinematics.acceleration

@@ -1,0 +1,11 @@
+id: negative-acceleration-always-means-slowing-down
+statement: >
+  Negative acceleration always means an object is slowing down.
+correction: >
+  Negative acceleration means the acceleration vector points in the
+  negative direction. If velocity is already negative, negative
+  acceleration makes the object speed up (more negative). The object
+  only slows down when acceleration opposes the current sign of
+  velocity.
+relatedLessons:
+  - mechanics.kinematics.acceleration
