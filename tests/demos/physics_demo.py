@@ -5,15 +5,14 @@ print("=" * 40)
 print("DHD Nexus Physics Engine Demo")
 print("=" * 40)
 
-d = Kinematics.displacement(25)
+# Displacement is demonstrated separately in displacement_demo.py --
+# Kinematics no longer duplicates that calculation.
 
 v = Kinematics.velocity(12)
 
 a = Kinematics.acceleration(2.5)
 
 print()
-
-print(d["displacement"])
 
 print(v["velocity"])
 

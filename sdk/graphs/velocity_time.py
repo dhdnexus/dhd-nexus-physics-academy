@@ -1,6 +1,6 @@
 from manim import *
 
-from framework.graphs.axes_builder import AxesBuilder
+from sdk.graphs.axes_builder import AxesBuilder
 
 
 class VelocityTimeGraph:

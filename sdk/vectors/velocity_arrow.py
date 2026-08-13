@@ -1,6 +1,6 @@
-from framework.vectors.vector_arrow import VectorArrow
+from sdk.vectors.vector_arrow import VectorArrow
 
-from framework.colors.colors import SUCCESS
+from sdk.colors.colors import SUCCESS
 
 
 class VelocityArrow(VectorArrow):

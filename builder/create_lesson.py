@@ -1,5 +1,4 @@
 from pathlib import Path
-import json
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -77,20 +76,21 @@ create(lesson)
 for f in folders:
     create(lesson / f)
 
-metadata = {
-    "lesson_id": f"MEC-KIN-{number:03d}",
-    "title": title,
-    "course": course,
-    "module": module,
-    "lesson_number": number,
-    "status": "draft",
-    "version": "1.0.0",
-}
-
-with open(lesson / "metadata.json", "w") as fp:
-    json.dump(metadata, fp, indent=4)
+# NOTE: this scaffolder previously wrote its own metadata.json (with an
+# invented lesson_id like "MEC-KIN-001") into every generated lesson
+# folder. That made it a second, independent lesson-identity registry,
+# competing with the canonical content/lessons/<id>.yaml in the frontend
+# repository. Lesson identity is now owned exclusively by that canonical
+# YAML file, so this scaffolder no longer writes metadata.json at all --
+# it only creates the folder skeleton and a README.
 
 with open(lesson / "README.md", "w") as fp:
-    fp.write(f"# {title}\n")
+    fp.write(
+        f"# {title}\n\n"
+        "Lesson identity (id, title, objectives, artifacts) is defined "
+        "in the canonical content specification "
+        "(content/lessons/<id>.yaml) in the Physics Academy frontend "
+        "repository, not in this folder.\n"
+    )
 
 print("\nDone.")

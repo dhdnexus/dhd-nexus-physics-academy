@@ -172,16 +172,12 @@ class LessonGenerator:
 
         )
 
-        create_file(
-
-            self.lesson_path / "metadata.json",
-
-            self.engine.render(
-                "metadata.json.tpl",
-                self.context,
-            )
-
-        )
+        # NOTE: metadata.json is intentionally no longer generated here.
+        # It previously invented its own lesson_id (course/module code +
+        # number), making this generator a second, independent
+        # lesson-identity registry alongside the canonical
+        # content/lessons/<id>.yaml in the frontend repository. Lesson
+        # identity now belongs exclusively to that canonical YAML.
 
         create_file(
 

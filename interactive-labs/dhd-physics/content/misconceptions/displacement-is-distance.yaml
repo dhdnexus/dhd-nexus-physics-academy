@@ -1,0 +1,14 @@
+id: displacement-is-distance
+statement: >
+  Displacement is the same thing as distance travelled.
+correction: >
+  Displacement is the change in position, Δr = r_f − r_i, and depends
+  only on the initial and final position. Distance travelled is the
+  total length of the path taken and depends on the whole path. The
+  two only have the same magnitude when the motion is direct and
+  never changes direction — for a detour, or a return to the starting
+  position, distance travelled can be much larger than the magnitude
+  of the displacement, and displacement can even be zero while
+  distance travelled is not.
+relatedLessons:
+  - mechanics.kinematics.displacement
