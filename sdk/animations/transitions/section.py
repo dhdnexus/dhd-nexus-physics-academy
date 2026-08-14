@@ -1,6 +1,6 @@
 from manim import *
 
-from framework.utils.title import TitleScreen
+from sdk.utils.title import TitleScreen
 
 
 class SectionTransition:

@@ -13,6 +13,9 @@ concepts:
   - id: mechanics.kinematics.acceleration
     label: Acceleration
 
+  - id: mechanics.kinematics.displacement
+    label: Displacement
+
   - id: kinematics.velocity
     label: Velocity
 

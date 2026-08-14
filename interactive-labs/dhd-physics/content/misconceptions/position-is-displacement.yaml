@@ -1,0 +1,12 @@
+id: position-is-displacement
+statement: >
+  An object's position coordinate is the same thing as its
+  displacement.
+correction: >
+  Position, r, is where an object is relative to a chosen origin at
+  one instant. Displacement, Δr = r_f − r_i, is the change between two
+  positions — it requires both an initial and a final position, and is
+  only defined for a pair of instants (or, equivalently, for a motion
+  between them), not for a single moment.
+relatedLessons:
+  - mechanics.kinematics.displacement

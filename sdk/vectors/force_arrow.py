@@ -1,6 +1,6 @@
-from framework.vectors.vector_arrow import VectorArrow
+from sdk.vectors.vector_arrow import VectorArrow
 
-from framework.colors.colors import ERROR
+from sdk.colors.colors import ERROR
 
 
 class ForceArrow(VectorArrow):

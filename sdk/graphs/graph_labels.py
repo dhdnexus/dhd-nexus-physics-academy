@@ -1,6 +1,6 @@
 from manim import *
 
-from framework.colors.colors import *
+from sdk.colors.colors import *
 
 
 class GraphTitle(Text):

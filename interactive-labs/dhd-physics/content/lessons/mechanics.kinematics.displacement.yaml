@@ -1,0 +1,69 @@
+id: mechanics.kinematics.displacement
+title: Displacement
+domain: mechanics
+topic: kinematics
+description: >
+  Displacement as the change in position, Δr = r_f − r_i, established
+  against an explicit reference frame (origin, positive direction,
+  units). Distinguishes position, displacement, and distance travelled
+  using a non-monotonic (detour / return-to-origin) example, and lays
+  the reference-frame foundation the Velocity and Acceleration lessons
+  build on.
+objectives:
+  - "Identify the reference frame for a motion: origin, positive direction, and units."
+  - "Distinguish an object's position, r, from its displacement, Δr = r_f − r_i."
+  - "Calculate signed displacement from an initial and a final position, and read its sign as a direction."
+  - "Distinguish displacement (depends only on endpoints) from distance travelled (depends on the whole path)."
+  - "Explain why a return-to-origin motion has zero displacement but non-zero distance travelled."
+  - "Read a position-time graph without mistaking it for the spatial path of the motion."
+prerequisites: []
+stream: concept
+
+artifacts:
+  - id: web-lab-displacement
+    type: web-lab
+    status: implemented
+    location: /mechanics/kinematics/displacement
+    label: Displacement Web Lab
+  - id: manim-displacement-intro
+    type: manim
+    status: implemented
+    label: "Displacement — conceptual animation"
+  - id: marimo-displacement-numeric
+    type: marimo
+    status: planned
+    label: "Displacement — numerical exploration notebook"
+
+instruction:
+  predict: >
+    Before touching the controls, predict whether walking from -4 m to
+    6 m and back to -4 m gives the same displacement as staying still.
+  explore: >
+    Manipulate the initial and final position, and try the direct,
+    detour, and return-to-origin routes in the Web Lab, watching how
+    displacement and distance travelled respond differently.
+  reflect: >
+    Compare the prediction to what the lab actually showed, especially
+    for the return-to-origin route where distance travelled is large
+    but displacement is zero.
+  observe: >
+    The position marker, the displacement vector, and the running
+    distance-travelled total update live as the object moves along the
+    chosen route.
+  model: >
+    Δr = r_f − r_i, shown alongside the position-time graph and the
+    origin-anchored position vector r.
+
+misconceptions:
+  - displacement-is-distance
+  - position-is-displacement
+
+curriculumMaps:
+  ccmas: PHY101
+  traditional: PHYS-101-KIN
+
+bridges:
+  - kinematics.velocity
+
+difficulty: introductory
+estimatedMinutes: 15

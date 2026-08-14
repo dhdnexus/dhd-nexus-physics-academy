@@ -15,29 +15,14 @@ class Kinematics:
 
     """
     Collection of reusable kinematics functions.
+
+    Note: displacement/distance calculations live in
+    sdk.physics.mechanics.motion.Motion (and the
+    sdk.physics.mechanics.displacement.Displacement facade over it).
+    This class intentionally does not duplicate that calculation --
+    there is exactly one authoritative displacement path in the
+    Physics Core.
     """
-
-    @staticmethod
-    def displacement(s):
-
-        Validator.not_none(displacement=s)
-
-        result = PhysicsResult(
-            topic="Displacement",
-            equation="s"
-        )
-
-        result.add(
-            "displacement",
-            Quantity(
-                value=s,
-                unit="m",
-                symbol="s",
-                name="Displacement"
-            )
-        )
-
-        return result
 
     @staticmethod
     def velocity(v):

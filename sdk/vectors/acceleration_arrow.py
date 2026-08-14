@@ -1,6 +1,6 @@
-from framework.vectors.vector_arrow import VectorArrow
+from sdk.vectors.vector_arrow import VectorArrow
 
-from framework.colors.colors import WARNING
+from sdk.colors.colors import WARNING
 
 
 class AccelerationArrow(VectorArrow):

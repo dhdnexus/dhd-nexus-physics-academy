@@ -1,5 +1,6 @@
 import AcademyLayout from "../../../../components/academy/AcademyLayout";
 import KinematicsExplorer from "../components/KinematicsExplorer";
+import MarimoLabLaunch from "./components/MarimoLabLaunch";
 
 export default function Displacement() {
   return (
@@ -14,6 +15,7 @@ export default function Displacement() {
       ]}
     >
       <KinematicsExplorer mode="displacement" />
+      <MarimoLabLaunch />
     </AcademyLayout>
   );
 }
