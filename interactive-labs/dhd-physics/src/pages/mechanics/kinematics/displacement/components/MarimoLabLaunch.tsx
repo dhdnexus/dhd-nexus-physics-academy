@@ -1,21 +1,14 @@
 import "./marimo-lab-launch.css";
 
+import { CheckCircle2, Clock, RefreshCw, Play } from "lucide-react";
+
+import { useMarimoSession } from "../../../../../context/MarimoSessionContext";
+import { launchMarimo } from "../../../../../services/marimoLauncher";
+
 /**
- * DHD Nexus Physics Academy — Displacement Lesson
- * Marimo Interactive Lab launch card (Milestone B9.2).
- *
- * This component is presentational only. It performs no displacement
- * or distance calculations of its own -- it references the existing
- * Marimo notebook (marimo-notebooks/mechanics/kinematics/
- * lesson-01-displacement/displacement_lab.py) as the computational
- * companion, rather than reimplementing any of its physics here.
- *
- * The notebook runs as a separate Python/Marimo process and is not
- * bundled into this static React build. If a hosted notebook URL is
- * configured (VITE_MARIMO_DISPLACEMENT_URL), this card embeds it in
- * an iframe; otherwise it falls back to the exact local launch
- * command, so the experience degrades gracefully rather than
- * pointing at a broken link.
+ * DHD Nexus Physics Academy
+ * Milestone B9.3
+ * Bidirectional Launch & Session Management
  */
 
 const LAUNCH_COMMAND =
@@ -24,42 +17,89 @@ const LAUNCH_COMMAND =
 const LEARNING_OBJECTIVES = [
   "Identify the reference frame for a motion: origin, positive direction, and units.",
   "Distinguish an object's position, r, from its displacement, Δr = r_f − r_i.",
-  "Calculate signed displacement from an initial and a final position, and read its sign as a direction.",
-  "Distinguish displacement (depends only on endpoints) from distance travelled (depends on the whole path).",
-  "Explain why a return-to-origin motion has zero displacement but non-zero distance travelled.",
+  "Calculate signed displacement from an initial and a final position.",
+  "Distinguish displacement from distance travelled.",
+  "Explain return-to-origin motion using displacement and distance.",
 ];
 
 function hostedNotebookUrl(): string | null {
-  const url = import.meta.env.VITE_MARIMO_DISPLACEMENT_URL as string | undefined;
+  const url = import.meta.env
+    .VITE_MARIMO_DISPLACEMENT_URL as string | undefined;
+
   return url && url.trim().length > 0 ? url : null;
 }
 
 export default function MarimoLabLaunch() {
   const embedUrl = hostedNotebookUrl();
+  const { session, refresh } = useMarimoSession();
+
+  const handleLaunch = async () => {
+    await launchMarimo();
+    setTimeout(refresh, 1000);
+  };
+
+  const statusIcon =
+    session.status === "running" ? (
+      <CheckCircle2 size={18} color="#16A34A" />
+    ) : (
+      <Clock size={18} color="#D97706" />
+    );
+
+  const statusText =
+    session.status === "running"
+      ? "Running"
+      : session.status === "checking"
+      ? "Checking..."
+      : "Launch Required";
 
   return (
     <section className="mll-card" aria-labelledby="mll-heading">
       <div className="mll-header">
         <span className="mll-eyebrow">Computational companion</span>
+
         <h2 id="mll-heading" className="mll-title">
           Interactive Computational Lab
         </h2>
+
         <p className="mll-overview">
-          The Displacement Explorer above shows the concept live in your
-          browser. The Marimo lab is the same lesson's computational
-          companion: a Python notebook where you can freely change the
-          initial and final position, add a detour, and watch
-          displacement and distance travelled recompute in real time —
-          all driven by the same displacement mathematics, not a
-          separate reimplementation of it.
+          The Displacement Explorer teaches the concept visually. The
+          Marimo notebook provides computational experimentation using
+          the same displacement mathematics from the Python calculator
+          layer.
         </p>
+      </div>
+
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          gap: "0.5rem",
+          marginBottom: "1rem",
+        }}
+      >
+        {statusIcon}
+        <strong>{statusText}</strong>
+
+        <button
+          onClick={refresh}
+          style={{
+            marginLeft: "auto",
+            display: "flex",
+            alignItems: "center",
+            gap: "0.35rem",
+          }}
+        >
+          <RefreshCw size={14} />
+          Refresh
+        </button>
       </div>
 
       <div className="mll-objectives">
         <h3 className="mll-objectives-heading">Learning objectives</h3>
+
         <ul>
-          {LEARNING_OBJECTIVES.map((objective) => (
-            <li key={objective}>{objective}</li>
+          {LEARNING_OBJECTIVES.map((item) => (
+            <li key={item}>{item}</li>
           ))}
         </ul>
       </div>
@@ -68,35 +108,37 @@ export default function MarimoLabLaunch() {
         <div className="mll-embed-wrap">
           <iframe
             src={embedUrl}
-            title="Displacement — Marimo Interactive Lab"
+            title="Displacement Marimo Lab"
             className="mll-embed"
             loading="lazy"
           />
-          <a
+
+          <button
+            onClick={handleLaunch}
             className="mll-launch-button"
-            href={embedUrl}
-            target="_blank"
-            rel="noreferrer"
+            style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}
           >
-            Open in a new tab ↗
-          </a>
+            <Play size={16} />
+            Open in New Tab
+          </button>
         </div>
       ) : (
         <div className="mll-launch-fallback">
           <p className="mll-launch-note">
-            This lab runs as a local Marimo notebook and isn't hosted
-            for this deployment yet. Launch it from the engineering
-            repository:
+            Local notebook detected through the DHD Nexus session
+            manager.
           </p>
+
           <code className="mll-launch-command">{LAUNCH_COMMAND}</code>
-          <a
+
+          <button
+            onClick={handleLaunch}
             className="mll-launch-button"
-            href="https://docs.marimo.io/getting_started/"
-            target="_blank"
-            rel="noreferrer"
+            style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}
           >
-            New to Marimo? ↗
-          </a>
+            <Play size={16} />
+            Launch Marimo Notebook
+          </button>
         </div>
       )}
     </section>
