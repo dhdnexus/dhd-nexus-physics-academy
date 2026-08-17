@@ -1,0 +1,140 @@
+.dlr-screen {
+  --dlr-navy: #0b1f3a;
+  --dlr-navy-light: #13294f;
+  --dlr-gold: #d4af37;
+  --dlr-cyan: #00e5ff;
+  --dlr-text: #e5edf8;
+  --dlr-muted: #9fb0c8;
+
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: radial-gradient(
+      circle at top left,
+      var(--dlr-navy-light) 0%,
+      var(--dlr-navy) 60%
+    ),
+    var(--dlr-navy);
+  color: var(--dlr-text);
+}
+
+.dlr-panel {
+  width: 100%;
+  max-width: 520px;
+  padding: 40px 36px;
+  border-radius: 20px;
+  border: 1px solid rgba(212, 175, 55, 0.28);
+  border-left: 6px solid var(--dlr-gold);
+  background: rgba(255, 255, 255, 0.03);
+  box-shadow: 0 30px 80px rgba(2, 6, 23, 0.45);
+  text-align: left;
+}
+
+.dlr-eyebrow {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--dlr-gold);
+}
+
+.dlr-title {
+  margin: 6px 0 16px 0;
+  font-size: 24px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.dlr-body {
+  margin: 0 0 20px 0;
+  line-height: 1.6;
+  color: var(--dlr-muted);
+}
+
+.dlr-status {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+  color: var(--dlr-cyan);
+  font-weight: 600;
+}
+
+.dlr-status-text {
+  margin: 0 0 20px 0;
+  color: var(--dlr-muted);
+}
+
+.dlr-status-text strong {
+  color: var(--dlr-text);
+}
+
+.dlr-spin {
+  animation: dlr-spin 1s linear infinite;
+}
+
+@keyframes dlr-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.dlr-manual-link,
+.dlr-launch-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 14px;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+}
+
+.dlr-manual-link {
+  background: rgba(0, 229, 255, 0.12);
+  color: var(--dlr-cyan);
+  border: 1px solid rgba(0, 229, 255, 0.3);
+}
+
+.dlr-launch-button {
+  background: var(--dlr-gold);
+  color: var(--dlr-navy);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.dlr-launch-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px rgba(212, 175, 55, 0.35);
+}
+
+.dlr-back-link {
+  display: block;
+  margin-top: 28px;
+  color: var(--dlr-muted);
+  font-size: 13px;
+  text-decoration: none;
+}
+
+.dlr-back-link:hover {
+  color: var(--dlr-text);
+}
+
+@media (max-width: 480px) {
+  .dlr-panel {
+    padding: 28px 22px;
+  }
+
+  .dlr-title {
+    font-size: 20px;
+  }
+}

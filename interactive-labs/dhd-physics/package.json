@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "npm run sync:marimo && tsc -b && vite build",
+    "sync:marimo": "node scripts/sync-marimo-lab.mjs",
     "lint": "oxlint",
     "preview": "vite preview",
     "validate:content": "node scripts/validate-content.mjs"

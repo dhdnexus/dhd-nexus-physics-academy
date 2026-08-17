@@ -1,18 +1,22 @@
 import "./marimo-lab-launch.css";
 
-import { CheckCircle2, Clock, RefreshCw, Play } from "lucide-react";
+import { Link } from "react-router-dom";
+import { CheckCircle2, Clock, Play } from "lucide-react";
 
-import { useMarimoSession } from "../../../../../context/MarimoSessionContext";
-import { launchMarimo } from "../../../../../services/marimoLauncher";
+import { useMarimoLab } from "../../../../../hooks/useMarimoLab";
 
 /**
  * DHD Nexus Physics Academy
- * Milestone B9.3
- * Bidirectional Launch & Session Management
+ * Milestone B9.4.3 — React Integration
+ *
+ * Upgraded from B9.3: this card no longer talks to localhost directly
+ * or embeds anything in an iframe. It links to the dedicated
+ * full-screen lab route (/mechanics/kinematics/displacement/lab),
+ * which itself resolves -- via useMarimoLab() -- to either the
+ * browser-native WASM export (students, default, no backend) or the
+ * local Marimo server (authoring, opt-in). This component doesn't
+ * need to know which; that's the point of the abstraction.
  */
-
-const LAUNCH_COMMAND =
-  "marimo run marimo-notebooks/mechanics/kinematics/lesson-01-displacement/displacement_lab.py";
 
 const LEARNING_OBJECTIVES = [
   "Identify the reference frame for a motion: origin, positive direction, and units.",
@@ -22,35 +26,24 @@ const LEARNING_OBJECTIVES = [
   "Explain return-to-origin motion using displacement and distance.",
 ];
 
-function hostedNotebookUrl(): string | null {
-  const url = import.meta.env
-    .VITE_MARIMO_DISPLACEMENT_URL as string | undefined;
-
-  return url && url.trim().length > 0 ? url : null;
-}
-
 export default function MarimoLabLaunch() {
-  const embedUrl = hostedNotebookUrl();
-  const { session, refresh } = useMarimoSession();
-
-  const handleLaunch = async () => {
-    await launchMarimo();
-    setTimeout(refresh, 1000);
-  };
+  const { mode, status } = useMarimoLab();
 
   const statusIcon =
-    session.status === "running" ? (
+    status === "ready" || status === "running" ? (
       <CheckCircle2 size={18} color="#16A34A" />
     ) : (
       <Clock size={18} color="#D97706" />
     );
 
   const statusText =
-    session.status === "running"
-      ? "Running"
-      : session.status === "checking"
-      ? "Checking..."
-      : "Launch Required";
+    mode === "wasm"
+      ? "Ready — runs in your browser, no install required"
+      : status === "running"
+      ? "Local Marimo server running"
+      : status === "checking"
+      ? "Checking local server..."
+      : "Local Marimo — launch required";
 
   return (
     <section className="mll-card" aria-labelledby="mll-heading">
@@ -62,36 +55,17 @@ export default function MarimoLabLaunch() {
         </h2>
 
         <p className="mll-overview">
-          The Displacement Explorer teaches the concept visually. The
-          Marimo notebook provides computational experimentation using
-          the same displacement mathematics from the Python calculator
-          layer.
+          The Displacement Explorer above teaches the concept visually.
+          The Marimo lab lets you experiment computationally with the
+          same displacement mathematics from the Python calculator
+          layer — no duplicated physics, just a different way to
+          explore it.
         </p>
       </div>
 
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          gap: "0.5rem",
-          marginBottom: "1rem",
-        }}
-      >
+      <div className="mll-status-row">
         {statusIcon}
         <strong>{statusText}</strong>
-
-        <button
-          onClick={refresh}
-          style={{
-            marginLeft: "auto",
-            display: "flex",
-            alignItems: "center",
-            gap: "0.35rem",
-          }}
-        >
-          <RefreshCw size={14} />
-          Refresh
-        </button>
       </div>
 
       <div className="mll-objectives">
@@ -104,43 +78,13 @@ export default function MarimoLabLaunch() {
         </ul>
       </div>
 
-      {embedUrl ? (
-        <div className="mll-embed-wrap">
-          <iframe
-            src={embedUrl}
-            title="Displacement Marimo Lab"
-            className="mll-embed"
-            loading="lazy"
-          />
-
-          <button
-            onClick={handleLaunch}
-            className="mll-launch-button"
-            style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}
-          >
-            <Play size={16} />
-            Open in New Tab
-          </button>
-        </div>
-      ) : (
-        <div className="mll-launch-fallback">
-          <p className="mll-launch-note">
-            Local notebook detected through the DHD Nexus session
-            manager.
-          </p>
-
-          <code className="mll-launch-command">{LAUNCH_COMMAND}</code>
-
-          <button
-            onClick={handleLaunch}
-            className="mll-launch-button"
-            style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}
-          >
-            <Play size={16} />
-            Launch Marimo Notebook
-          </button>
-        </div>
-      )}
+      <Link
+        to="/mechanics/kinematics/displacement/lab"
+        className="mll-launch-button"
+      >
+        <Play size={16} />
+        Open Interactive Computational Lab
+      </Link>
     </section>
   );
 }

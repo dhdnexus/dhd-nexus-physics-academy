@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="./favicon.ico" />
+    <!-- Preload is necessary because we show these images when we disconnect from the server,
+    but at that point we cannot load these images from the server -->
+    <link rel="preload" href="./assets/gradient-yHQUC_QB.png" as="image" />
+    <link rel="preload" href="./assets/noise-60BoTA8O.png" as="image" />
+    <!-- Preload the fonts -->
+    <link rel="preload" href="./assets/Lora-VariableFont_wght-CZceb_kH.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+    <link rel="preload" href="./assets/PTSans-Regular-Bam3NpBI.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+    <link rel="preload" href="./assets/PTSans-Bold-C_DwAp7Z.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+    <link rel="preload" href="./assets/FiraMono-Regular-CEsLFVD9.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+    <link rel="preload" href="./assets/FiraMono-Medium-D5MAsWEG.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+    <link rel="preload" href="./assets/FiraMono-Bold-C6PDArdf.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="description" content="a marimo app" />
+    <link rel="apple-touch-icon" href="./apple-touch-icon.png" />
+    <link rel="manifest" href="./manifest.json" />
+
+    <script data-marimo="true">
+      function __resizeIframe(obj) {
+        const scrollbarHeight = 20; // Max between windows, mac, and linux
+
+        function setHeight() {
+          // Guard against race condition where iframe isn't ready
+          if (!obj.contentWindow?.document?.documentElement) {
+            return;
+          }
+          const element = obj.contentWindow.document.documentElement;
+          // If there is no vertical scrollbar, we don't need to resize the iframe
+          if (element.scrollHeight === element.clientHeight) {
+            return;
+          }
+
+          // Create a new height that includes the scrollbar height if it's visible
+          const hasHorizontalScrollbar = element.scrollWidth > element.clientWidth;
+          const newHeight = element.scrollHeight + (hasHorizontalScrollbar ? scrollbarHeight : 0);
+
+          // Only update the height if it's different from the current height
+          if (obj.style.height !== `${newHeight}px`) {
+            obj.style.height = `${newHeight}px`;
+          }
+        }
+
+        // Resize the iframe to the height of the content and bottom scrollbar height
+        setHeight();
+
+        // Resize the iframe when the content changes
+        const resizeObserver = new ResizeObserver((_entries) => {
+          setHeight();
+        });
+        // Only observe if iframe content is ready
+        if (obj.contentWindow?.document?.body) {
+          resizeObserver.observe(obj.contentWindow.document.body);
+        }
+      }
+    </script>
+    <marimo-filename hidden>notebook.py</marimo-filename>
+    <!-- TODO(Trevor): Legacy, required by VS Code plugin. Remove when plugin is updated (see marimo/server/_templates/template.py) -->
+    <marimo-version data-version="{{ version }}" hidden></marimo-version>
+    <marimo-user-config data-config="{{ user_config }}" hidden></marimo-user-config>
+    <marimo-server-token data-token="{{ server_token }}" hidden></marimo-server-token>
+    <!-- /TODO -->
+    <title>Displacement — DHD Nexus Physics Academy</title>
+    <script type="module" crossorigin src="./assets/index-Gv23EHlE.js"></script>
+    <link rel="modulepreload" crossorigin href="./assets/preload-helper-TXkS1QI3.js">
+    <link rel="modulepreload" crossorigin href="./assets/objects-BlG0ZrO0.js">
+    <link rel="modulepreload" crossorigin href="./assets/chunk-LvLJmgfZ.js">
+    <link rel="modulepreload" crossorigin href="./assets/react-Bj1aDYRI.js">
+    <link rel="modulepreload" crossorigin href="./assets/compiler-runtime-B3qBwwSJ.js">
+    <link rel="modulepreload" crossorigin href="./assets/jsx-runtime-Blw4afVn.js">
+    <link rel="modulepreload" crossorigin href="./assets/useEventListener-C0195JsF.js">
+    <link rel="modulepreload" crossorigin href="./assets/defaultLocale-DOVIEEPN.js">
+    <link rel="modulepreload" crossorigin href="./assets/precisionRound-i2ImZxgc.js">
+    <link rel="modulepreload" crossorigin href="./assets/defaultLocale-BUCH2FMc.js">
+    <link rel="modulepreload" crossorigin href="./assets/vega-loader.browser-Dun7Qe4B.js">
+    <link rel="modulepreload" crossorigin href="./assets/tooltip-B7U4xkIN.js">
+    <link rel="modulepreload" crossorigin href="./assets/clsx-XrBBnd7s.js">
+    <link rel="modulepreload" crossorigin href="./assets/cn-DYvqRARy.js">
+    <link rel="modulepreload" crossorigin href="./assets/badge-B92a4ePY.js">
+    <link rel="modulepreload" crossorigin href="./assets/button-DDGiD1NW.js">
+    <link rel="modulepreload" crossorigin href="./assets/react-dom-CSu739Rf.js">
+    <link rel="modulepreload" crossorigin href="./assets/fullscreen-CTDqNQr6.js">
+    <link rel="modulepreload" crossorigin href="./assets/menu-items-CCi6aOPm.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-BLN8PNJV.js">
+    <link rel="modulepreload" crossorigin href="./assets/createLucideIcon-w-Qo9n0R.js">
+    <link rel="modulepreload" crossorigin href="./assets/check-rzLRd0j9.js">
+    <link rel="modulepreload" crossorigin href="./assets/x-C-Eq0ag8.js">
+    <link rel="modulepreload" crossorigin href="./assets/select-BP75_5jJ.js">
+    <link rel="modulepreload" crossorigin href="./assets/tooltip-4bZlU7jl.js">
+    <link rel="modulepreload" crossorigin href="./assets/use-toast-BwJoaaDM.js">
+    <link rel="modulepreload" crossorigin href="./assets/useEvent-D91BmmQi.js">
+    <link rel="modulepreload" crossorigin href="./assets/invariant-CkiqGLcK.js">
+    <link rel="modulepreload" crossorigin href="./assets/isObject-DvLSfCY5.js">
+    <link rel="modulepreload" crossorigin href="./assets/_baseFor-DKD1r8uL.js">
+    <link rel="modulepreload" crossorigin href="./assets/merge-_9WLTEyt.js">
+    <link rel="modulepreload" crossorigin href="./assets/zod-H_cgTO0M.js">
+    <link rel="modulepreload" crossorigin href="./assets/utils-BWBBpCkT.js">
+    <link rel="modulepreload" crossorigin href="./assets/constants-CDyU_g2F.js">
+    <link rel="modulepreload" crossorigin href="./assets/session-BmukRjSi.js">
+    <link rel="modulepreload" crossorigin href="./assets/Deferred-D2igisxY.js">
+    <link rel="modulepreload" crossorigin href="./assets/config-B-Q7J_6d.js">
+    <link rel="modulepreload" crossorigin href="./assets/uuid-ImXS-885.js">
+    <link rel="modulepreload" crossorigin href="./assets/DeferredRequestRegistry-C8EV1PoE.js">
+    <link rel="modulepreload" crossorigin href="./assets/requests-9-v2bhoi.js">
+    <link rel="modulepreload" crossorigin href="./assets/useLifecycle-lLOBhc-1.js">
+    <link rel="modulepreload" crossorigin href="./assets/useNonce-CbdaHKzX.js">
+    <link rel="modulepreload" crossorigin href="./assets/useTheme-Bxv9B31g.js">
+    <link rel="modulepreload" crossorigin href="./assets/arrays-DbOq36rN.js">
+    <link rel="modulepreload" crossorigin href="./assets/strings--BknHX9C.js">
+    <link rel="modulepreload" crossorigin href="./assets/once-CGKw_kwj.js">
+    <link rel="modulepreload" crossorigin href="./assets/capabilities-DoEg0XwL.js">
+    <link rel="modulepreload" crossorigin href="./assets/createReducer-DGx5Af-C.js">
+    <link rel="modulepreload" crossorigin href="./assets/paths-BKO-pHK6.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-12S8I4CH.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-DYEuVkEX.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-CiVShZKM.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-BJZAIIze.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-aRc_dRed.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-DnjsPBRJ.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-DcwTQG1A.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-CPjTeT8p.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-DI1-Z60I.js">
+    <link rel="modulepreload" crossorigin href="./assets/stex-FMMSUPAS.js">
+    <link rel="modulepreload" crossorigin href="./assets/toDate-Ct2FT81-.js">
+    <link rel="modulepreload" crossorigin href="./assets/purify.es-CWmnYhGI.js">
+    <link rel="modulepreload" crossorigin href="./assets/cjs-D5tzp-Y6.js">
+    <link rel="modulepreload" crossorigin href="./assets/isSymbol-BT6B8Bon.js">
+    <link rel="modulepreload" crossorigin href="./assets/now-CsYTPAhW.js">
+    <link rel="modulepreload" crossorigin href="./assets/debounce-OiXznToA.js">
+    <link rel="modulepreload" crossorigin href="./assets/database-zap-CKO8g4BU.js">
+    <link rel="modulepreload" crossorigin href="./assets/main-BNL5rxQw.js">
+    <link rel="modulepreload" crossorigin href="./assets/cells-CJLUCcQg.js">
+    <link rel="modulepreload" crossorigin href="./assets/kbd-C5HnBH5U.js">
+    <link rel="modulepreload" crossorigin href="./assets/useInstallPackage-WiYBwhUO.js">
+    <link rel="modulepreload" crossorigin href="./assets/alert-dialog-Bb8Lz8ko.js">
+    <link rel="modulepreload" crossorigin href="./assets/dialog-BCVepWLJ.js">
+    <link rel="modulepreload" crossorigin href="./assets/useDebounce-JDKr83KO.js">
+    <link rel="modulepreload" crossorigin href="./assets/numbers-rmawRqQP.js">
+    <link rel="modulepreload" crossorigin href="./assets/SSRProvider-BUSmWJKC.js">
+    <link rel="modulepreload" crossorigin href="./assets/context-BFPaAUK_.js">
+    <link rel="modulepreload" crossorigin href="./assets/useNumberFormatter-4-Qvf4uR.js">
+    <link rel="modulepreload" crossorigin href="./assets/usePress-5hBv4sjD.js">
+    <link rel="modulepreload" crossorigin href="./assets/input-JxFwu-3G.js">
+    <link rel="modulepreload" crossorigin href="./assets/ImperativeModal-fY-ZfT0b.js">
+    <link rel="modulepreload" crossorigin href="./assets/cell-link-CWQ4BYr-.js">
+    <link rel="modulepreload" crossorigin href="./assets/config-BJVx3eBW.js">
+    <link rel="modulepreload" crossorigin href="./assets/alert-jlwhGxSb.js">
+    <link rel="modulepreload" crossorigin href="./assets/chevron-right-BS_NcSch.js">
+    <link rel="modulepreload" crossorigin href="./assets/dropdown-menu-dHmZR8bI.js">
+    <link rel="modulepreload" crossorigin href="./assets/links-wcQA1Np1.js">
+    <link rel="modulepreload" crossorigin href="./assets/useRunCells-DZ4glj3f.js">
+    <link rel="modulepreload" crossorigin href="./assets/copy-Bxb1_Gtw.js">
+    <link rel="modulepreload" crossorigin href="./assets/copy-3iHFdt22.js">
+    <link rel="modulepreload" crossorigin href="./assets/copy-icon-neDQUo4Q.js">
+    <link rel="modulepreload" crossorigin href="./assets/RenderHTML-C1rWkDWe.js">
+    <link rel="modulepreload" crossorigin href="./assets/datasource-DbljozeY.js">
+    <link rel="modulepreload" crossorigin href="./assets/state-Rxc-B11B.js">
+    <link rel="modulepreload" crossorigin href="./assets/hat-glasses-BttHlyvs.js">
+    <link rel="modulepreload" crossorigin href="./assets/package-Bxz_8e44.js">
+    <link rel="modulepreload" crossorigin href="./assets/sparkles-DUCpRFlS.js">
+    <link rel="modulepreload" crossorigin href="./assets/MarimoErrorOutput-Cu5WMawt.js">
+    <link rel="modulepreload" crossorigin href="./assets/ErrorBoundary-DzTD8LVq.js">
+    <link rel="modulepreload" crossorigin href="./assets/eye-off-BOZA7gbn.js">
+    <link rel="modulepreload" crossorigin href="./assets/refresh-cw-CYq4mK5a.js">
+    <link rel="modulepreload" crossorigin href="./assets/tree-actions-BiQ4VzX-.js">
+    <link rel="modulepreload" crossorigin href="./assets/spinner-D-V4psAa.js">
+    <link rel="modulepreload" crossorigin href="./assets/html-to-image-CN9yTa5s.js">
+    <link rel="modulepreload" crossorigin href="./assets/focus-B6HBbAwF.js">
+    <link rel="modulepreload" crossorigin href="./assets/useAsyncData-Bg5iAViP.js">
+    <link rel="modulepreload" crossorigin href="./assets/LazyAnyLanguageCodeMirror-A-Ant1Ad.js">
+    <link rel="modulepreload" crossorigin href="./assets/micromark-factory-space-Dx_STMJD.js">
+    <link rel="modulepreload" crossorigin href="./assets/chunk-5FQGJX7Z-CYQpNADu.js">
+    <link rel="modulepreload" crossorigin href="./assets/markdown-renderer-CzJx-MnJ.js">
+    <link rel="modulepreload" crossorigin href="./assets/command-Dqxie4gq.js">
+    <link rel="modulepreload" crossorigin href="./assets/field-BsxD35VE.js">
+    <link rel="modulepreload" crossorigin href="./assets/popover-Bcz1Zikb.js">
+    <link rel="modulepreload" crossorigin href="./assets/errors-PgHhDa-M.js">
+    <link rel="modulepreload" crossorigin href="./assets/download-DwYUg-o4.js">
+    <link rel="modulepreload" crossorigin href="./assets/table-CH2plyy9.js">
+    <link rel="modulepreload" crossorigin href="./assets/useIframeCapabilities-j6fR_dBA.js">
+    <link rel="modulepreload" crossorigin href="./assets/error-banner-BSxEOIn2.js">
+    <link rel="modulepreload" crossorigin href="./assets/formats-DzmLpc9A.js">
+    <link rel="modulepreload" crossorigin href="./assets/utils-CCTAhdFi.js">
+    <link rel="modulepreload" crossorigin href="./assets/en-US-CjNeNXDB.js">
+    <link rel="modulepreload" crossorigin href="./assets/isValid-D7naiWNs.js">
+    <link rel="modulepreload" crossorigin href="./assets/dates-C2LWzsCZ.js">
+    <link rel="modulepreload" crossorigin href="./assets/extends-B9D0JO9U.js">
+    <link rel="modulepreload" crossorigin href="./assets/emotion-is-prop-valid.esm-lG8j6oqk.js">
+    <link rel="modulepreload" crossorigin href="./assets/useDateFormatter-rtpVEy3J.js">
+    <link rel="modulepreload" crossorigin href="./assets/react-icons.esm-D4GMDkIf.js">
+    <link rel="modulepreload" crossorigin href="./assets/RSPContexts-WiCgGm__.js">
+    <link rel="modulepreload" crossorigin href="./assets/table-D-tcnZC7.js">
+    <link rel="modulepreload" crossorigin href="./assets/ellipsis-C_B8Ux9M.js">
+    <link rel="modulepreload" crossorigin href="./assets/external-link-BOlXZUla.js">
+    <link rel="modulepreload" crossorigin href="./assets/message-circle-dL5J5ZsZ.js">
+    <link rel="modulepreload" crossorigin href="./assets/plus-AgXtozBz.js">
+    <link rel="modulepreload" crossorigin href="./assets/trash-2-72W0TZ3L.js">
+    <link rel="modulepreload" crossorigin href="./assets/react-resizable-panels.browser.esm-Z-MD3n3J.js">
+    <link rel="modulepreload" crossorigin href="./assets/JsonOutput-D2UI9WX5.js">
+    <link rel="modulepreload" crossorigin href="./assets/chart-no-axes-column-iDRxid4h.js">
+    <link rel="modulepreload" crossorigin href="./assets/square-function-DNNRTPQJ.js">
+    <link rel="modulepreload" crossorigin href="./assets/spec-C7opZZRp.js">
+    <link rel="modulepreload" crossorigin href="./assets/column-preview-DREOGG_c.js">
+    <link rel="modulepreload" crossorigin href="./assets/icons-CIPE8AIY.js">
+    <link rel="modulepreload" crossorigin href="./assets/radio-group-CcU5wNVj.js">
+    <link rel="modulepreload" crossorigin href="./assets/floating-outline-DBlzcHYf.js">
+    <link rel="modulepreload" crossorigin href="./assets/switch-OVajJBPR.js">
+    <link rel="modulepreload" crossorigin href="./assets/objectWithoutPropertiesLoose-CboCOq4o.js">
+    <link rel="modulepreload" crossorigin href="./assets/esm-B30N1GS0.js">
+    <link rel="modulepreload" crossorigin href="./assets/readonly-python-code-CYfbPYQ0.js">
+    <link rel="modulepreload" crossorigin href="./assets/file-headphone-DAu6VO6j.js">
+    <link rel="modulepreload" crossorigin href="./assets/file-CJH9JNGH.js">
+    <link rel="modulepreload" crossorigin href="./assets/image-5XI2VU-q.js">
+    <link rel="modulepreload" crossorigin href="./assets/file-icons-CODNoWOy.js">
+    <link rel="modulepreload" crossorigin href="./assets/events-90X9nql5.js">
+    <link rel="modulepreload" crossorigin href="./assets/share-852X_cqy.js">
+    <link rel="modulepreload" crossorigin href="./assets/blob-BNTWOaI9.js">
+    <link rel="modulepreload" crossorigin href="./assets/memoize-Tp7rARFe.js">
+    <link rel="modulepreload" crossorigin href="./assets/get-C-qh_et5.js">
+    <link rel="modulepreload" crossorigin href="./assets/_baseSet-CsW0tABf.js">
+    <link rel="modulepreload" crossorigin href="./assets/state-CsGOoEZv.js">
+    <link rel="modulepreload" crossorigin href="./assets/label-CqjrpwRC.js">
+    <link rel="modulepreload" crossorigin href="./assets/form-W6ZZMHnc.js">
+    <link rel="modulepreload" crossorigin href="./assets/textarea-DtCcemo9.js">
+    <link rel="modulepreload" crossorigin href="./assets/refresh-ccw-sLaKP2vj.js">
+    <link rel="modulepreload" crossorigin href="./assets/form-BYlqbYKI.js">
+    <link rel="modulepreload" crossorigin href="./assets/renderShortcut-Bl8_FVn8.js">
+    <link rel="modulepreload" crossorigin href="./assets/useBoolean-CFj86iac.js">
+    <link rel="modulepreload" crossorigin href="./assets/useDeepCompareMemoize-CSMoa-ga.js">
+    <link rel="modulepreload" crossorigin href="./assets/types-jdbI9Q8O.js">
+    <link rel="modulepreload" crossorigin href="./assets/semaphore-C-Nli4KG.js">
+    <link rel="modulepreload" crossorigin href="./assets/fileToBase64-hLJmVjNJ.js">
+    <link rel="modulepreload" crossorigin href="./assets/pathUtils-icFgkNy9.js">
+    <link rel="modulepreload" crossorigin href="./assets/prop-types-C638SUfx.js">
+    <link rel="modulepreload" crossorigin href="./assets/es-gYgfF8y5.js">
+    <link rel="modulepreload" crossorigin href="./assets/_hasPath-hMc_3QZy.js">
+    <link rel="modulepreload" crossorigin href="./assets/hasIn-CSsM95b1.js">
+    <link rel="modulepreload" crossorigin href="./assets/flatten-Bd5tsfm_.js">
+    <link rel="modulepreload" crossorigin href="./assets/pick-D1xb4gl6.js">
+    <link rel="modulepreload" crossorigin href="./assets/code-xml-aSiY8T7C.js">
+    <link rel="modulepreload" crossorigin href="./assets/globe-Dwo3iXzC.js">
+    <link rel="modulepreload" crossorigin href="./assets/house-DS0r7dNZ.js">
+    <link rel="modulepreload" crossorigin href="./assets/square-DFICx2Qv.js">
+    <link rel="modulepreload" crossorigin href="./assets/triangle-alert-BL4YVsPy.js">
+    <link rel="modulepreload" crossorigin href="./assets/bundle.esm-D0TWQ6iT.js">
+    <link rel="stylesheet" crossorigin href="./assets/cells-BVzo2MHf.css">
+    <link rel="stylesheet" crossorigin href="./assets/markdown-renderer-DdDKmWlR.css">
+    <link rel="stylesheet" crossorigin href="./assets/JsonOutput-BQtz7-np.css">
+    <link rel="stylesheet" crossorigin href="./assets/index-8Nlyq3mV.css">
+  <marimo-wasm hidden=""></marimo-wasm>
+    <script>
+        if (window.location.protocol === 'file:') {
+            alert('Warning: This file must be served by an HTTP server to function correctly.');
+        }
+    </script>
+    
+    <style>
+        #save-button {
+            display: none !important;
+        }
+        #filename-input {
+            display: none !important;
+        }
+    </style>
+    
+<script data-marimo="true">
+    Object.defineProperty(window, "__MARIMO_EXPORT_CONTEXT__", {
+        value: Object.freeze({
+            trusted: true,
+            notebookCode: "# /// script\n# requires-python = \"\u003E=3.12\"\n# dependencies = [\"marimo\u003E=0.23.16\", \"python-calculators @ ../public/wheels/python_calculators-0.1.0-py3-none-any.whl\"]\n# ///\n\nimport marimo\n\n__generated_with = \"0.23.16\"\napp = marimo.App(\n    width=\"medium\",\n    app_title=\"Displacement \u2014 DHD Nexus Physics Academy\",\n)\n\nwith app.setup:\n    # -----------------------------------------------------------------\n    # Repository bootstrap\n    #\n    # This notebook lives four directories below the engineering repo\n    # root (marimo-notebooks/mechanics/kinematics/lesson-01-displacement/).\n    # python_calculators/ lives at the repo root, so it needs to be on\n    # sys.path before it can be imported -- both when this file is run\n    # via `marimo run` / `marimo edit` and when it's imported directly\n    # by pytest.\n    # -----------------------------------------------------------------\n    import sys\n    from pathlib import Path\n\n    _repo_root = Path(__file__).resolve().parents[4]\n    if str(_repo_root) not in sys.path:\n        sys.path.insert(0, str(_repo_root))\n\n    import marimo as mo\n\n    # -----------------------------------------------------------------\n    # Brand / accent constants (DHD Nexus navy/gold palette)\n    # -----------------------------------------------------------------\n    NAVY = \"#0B1F3A\"\n    GOLD = \"#D4AF37\"\n    CYAN = \"#00E5FF\"\n    SLATE = \"#4A5A72\"\n\n    # -----------------------------------------------------------------\n    # Calculator imports -- the single authoritative source for\n    # displacement mathematics. This notebook does not recompute or\n    # duplicate any of this arithmetic itself.\n    # -----------------------------------------------------------------\n    from python_calculators.mechanics.kinematics.displacement_calculator import (\n        calculate_displacement,\n        calculate_distance,\n        direction,\n        vector_notation,\n    )\n\n    # -----------------------------------------------------------------\n    # SVG helper functions\n    # -----------------------------------------------------------------\n    def render_number_line_svg(\n        x1: float,\n        x2: float,\n        x_min: float = -10,\n        x_max: float = 10,\n        waypoint: float | None = None,\n        width: int = 640,\n        height: int = 160,\n    ) -\u003E str:\n        \"\"\"\n        A small, dependency-free SVG number line showing the initial\n        and final position (and, optionally, a detour waypoint) with a\n        displacement arrow drawn directly from x1 to x2.\n        \"\"\"\n        margin = 40\n        usable_width = width - 2 * margin\n\n        def to_px(x: float) -\u003E float:\n            fraction = (x - x_min) / (x_max - x_min)\n            return margin + fraction * usable_width\n\n        axis_y = height * 0.55\n        origin_px = to_px(0)\n        x1_px = to_px(x1)\n        x2_px = to_px(x2)\n\n        ticks = []\n        for tick in range(int(x_min), int(x_max) + 1):\n            tx = to_px(tick)\n            ticks.append(\n                f'\u003Cline x1=\"{tx}\" y1=\"{axis_y - 6}\" x2=\"{tx}\" y2=\"{axis_y + 6}\" '\n                f'stroke=\"{SLATE}\" stroke-width=\"1\" /\u003E'\n            )\n            if tick % 2 == 0:\n                ticks.append(\n                    f'\u003Ctext x=\"{tx}\" y=\"{axis_y + 24}\" font-size=\"11\" fill=\"{SLATE}\" '\n                    f'text-anchor=\"middle\"\u003E{tick}\u003C/text\u003E'\n                )\n        ticks_svg = \"\".join(ticks)\n\n        waypoint_svg = \"\"\n        if waypoint is not None:\n            wp_px = to_px(waypoint)\n            waypoint_svg = (\n                f'\u003Ccircle cx=\"{wp_px}\" cy=\"{axis_y}\" r=\"6\" fill=\"none\" '\n                f'stroke=\"{GOLD}\" stroke-width=\"2\" /\u003E'\n                f'\u003Ctext x=\"{wp_px}\" y=\"{axis_y - 16}\" font-size=\"12\" fill=\"{GOLD}\" '\n                f'text-anchor=\"middle\"\u003Edetour\u003C/text\u003E'\n            )\n\n        arrow_id = \"displacement-arrowhead\"\n\n        svg = f\"\"\"\n    \u003Csvg viewBox=\"0 0 {width} {height}\" xmlns=\"http://www.w3.org/2000/svg\"\n         style=\"background:{NAVY}; border-radius:8px;\"\u003E\n      \u003Cdefs\u003E\n        \u003Cmarker id=\"{arrow_id}\" markerWidth=\"10\" markerHeight=\"10\" refX=\"8\" refY=\"3\"\n                orient=\"auto\" markerUnits=\"strokeWidth\"\u003E\n          \u003Cpath d=\"M0,0 L0,6 L9,3 z\" fill=\"{CYAN}\" /\u003E\n        \u003C/marker\u003E\n      \u003C/defs\u003E\n\n      \u003Cline x1=\"{margin}\" y1=\"{axis_y}\" x2=\"{width - margin}\" y2=\"{axis_y}\"\n            stroke=\"{SLATE}\" stroke-width=\"2\" /\u003E\n      {ticks_svg}\n\n      \u003Ccircle cx=\"{origin_px}\" cy=\"{axis_y}\" r=\"4\" fill=\"{GOLD}\" /\u003E\n      \u003Ctext x=\"{origin_px}\" y=\"{axis_y + 24}\" font-size=\"11\" fill=\"{GOLD}\"\n            text-anchor=\"middle\"\u003E0\u003C/text\u003E\n\n      {waypoint_svg}\n\n      \u003Cline x1=\"{x1_px}\" y1=\"{axis_y - 28}\" x2=\"{x2_px}\" y2=\"{axis_y - 28}\"\n            stroke=\"{CYAN}\" stroke-width=\"2.5\" marker-end=\"url(#{arrow_id})\" /\u003E\n      \u003Ctext x=\"{(x1_px + x2_px) / 2}\" y=\"{axis_y - 36}\" font-size=\"13\" fill=\"{CYAN}\"\n            text-anchor=\"middle\"\u003E\u0026#916;x\u003C/text\u003E\n\n      \u003Ccircle cx=\"{x1_px}\" cy=\"{axis_y}\" r=\"6\" fill=\"{NAVY}\" stroke=\"#FFFFFF\" stroke-width=\"2\" /\u003E\n      \u003Ctext x=\"{x1_px}\" y=\"{axis_y - 44}\" font-size=\"12\" fill=\"#FFFFFF\"\n            text-anchor=\"middle\"\u003Ex\u0026#8321; = {x1:g}\u003C/text\u003E\n\n      \u003Ccircle cx=\"{x2_px}\" cy=\"{axis_y}\" r=\"6\" fill=\"{CYAN}\" stroke=\"#FFFFFF\" stroke-width=\"2\" /\u003E\n      \u003Ctext x=\"{x2_px}\" y=\"{axis_y - 44}\" font-size=\"12\" fill=\"#FFFFFF\"\n            text-anchor=\"middle\"\u003Ex\u0026#8322; = {x2:g}\u003C/text\u003E\n    \u003C/svg\u003E\n    \"\"\".strip()\n\n        return svg\n\n\n@app.cell\ndef _():\n    mo.md(\n        f\"\"\"\n        \u003Cdiv style=\"background:{NAVY}; color:#FFFFFF; padding:1.5rem 2rem;\n                    border-radius:8px; border-left:6px solid {GOLD};\"\u003E\n        \u003Ch1 style=\"margin:0; color:{GOLD};\"\u003EDHD Nexus Physics Academy\u003C/h1\u003E\n        \u003Ch2 style=\"margin:0.25rem 0 0 0; font-weight:400;\"\u003ELesson 01 \u2014 Displacement\u003C/h2\u003E\n        \u003Cp style=\"margin-top:1rem; color:#C9D3E0;\"\u003E\n        This notebook is the computational companion to the Displacement\n        lecture and Web Lab. Use the sliders below to move an object along\n        a number line and watch \u003Cb\u003Eposition\u003C/b\u003E, \u003Cb\u003Edisplacement\u003C/b\u003E, and\n        \u003Cb\u003Edistance travelled\u003C/b\u003E update live.\n        \u003C/p\u003E\n        \u003C/div\u003E\n        \"\"\"\n    )\n    return\n\n\n@app.cell\ndef _():\n    mo.md(\"\"\"\n    ## Position Explorer\n    \"\"\")\n    return\n\n\n@app.cell\ndef _():\n    x1_slider = mo.ui.slider(\n        start=-10, stop=10, step=1, value=-4, label=\"Initial position x\u2081 (m)\"\n    )\n    x2_slider = mo.ui.slider(\n        start=-10, stop=10, step=1, value=6, label=\"Final position x\u2082 (m)\"\n    )\n    mo.hstack([x1_slider, x2_slider])\n    return x1_slider, x2_slider\n\n\n@app.cell\ndef _(x1_slider, x2_slider):\n    mo.Html(render_number_line_svg(x1_slider.value, x2_slider.value))\n    return\n\n\n@app.cell\ndef _():\n    mo.md(\"\"\"\n    ## Displacement Calculation\n    \"\"\")\n    return\n\n\n@app.cell\ndef _(x1_slider, x2_slider):\n    displacement = calculate_displacement(x1_slider.value, x2_slider.value)\n    distance = calculate_distance(x1_slider.value, x2_slider.value)\n    motion_direction = direction(x1_slider.value, x2_slider.value)\n    notation = vector_notation(x1_slider.value, x2_slider.value)\n    return displacement, distance, motion_direction, notation\n\n\n@app.cell\ndef _(\n    displacement,\n    distance,\n    motion_direction,\n    notation,\n    x1_slider,\n    x2_slider,\n):\n    mo.md(\n        f\"\"\"\n        | Quantity | Value |\n        |---|---|\n        | Initial position, x\u2081 | {x1_slider.value:g} m |\n        | Final position, x\u2082 | {x2_slider.value:g} m |\n        | Displacement, \u0394x | {displacement:+g} m |\n        | Distance travelled | {distance:g} m |\n        | Direction | {motion_direction} |\n\n        {notation}\n        \"\"\"\n    )\n    return\n\n\n@app.cell\ndef _():\n    mo.md(\"\"\"\n    ## Distance vs Displacement\n\n    Displacement depends only on where you start and where you end\n    up. Distance travelled depends on the whole path. Drag the\n    **detour** slider below to send the object via an intermediate\n    point between x\u2081 and x\u2082, and watch the displacement stay fixed\n    while the distance travelled changes.\n\n    The detour distance is computed by calling `calculate_distance()`\n    once for each leg of the path (x\u2081 \u2192 detour, detour \u2192 x\u2082) and\n    summing the two legs \u2014 no new displacement/distance arithmetic is\n    introduced here.\n    \"\"\")\n    return\n\n\n@app.cell\ndef _(x1_slider, x2_slider):\n    detour_default = round((x1_slider.value + x2_slider.value) / 2)\n    detour_slider = mo.ui.slider(\n        start=-10, stop=10, step=1, value=detour_default, label=\"Detour waypoint (m)\"\n    )\n    detour_slider\n    return (detour_slider,)\n\n\n@app.cell\ndef _(detour_slider, x1_slider, x2_slider):\n    detour_displacement = calculate_displacement(x1_slider.value, x2_slider.value)\n    detour_distance = calculate_distance(x1_slider.value, detour_slider.value) + calculate_distance(\n        detour_slider.value, x2_slider.value\n    )\n    return detour_displacement, detour_distance\n\n\n@app.cell\ndef _(detour_slider, x1_slider, x2_slider):\n    mo.Html(\n        render_number_line_svg(\n            x1_slider.value, x2_slider.value, waypoint=detour_slider.value\n        )\n    )\n    return\n\n\n@app.cell\ndef _(detour_displacement, detour_distance):\n    is_direct = detour_distance == abs(detour_displacement)\n    comparison_note = (\n        \"Direct path: distance travelled equals the magnitude of the displacement.\"\n        if is_direct\n        else \"Detour: distance travelled is **greater** than the magnitude of the displacement.\"\n    )\n    mo.md(\n        f\"\"\"\n        | Quantity | Value |\n        |---|---|\n        | Displacement, \u0394x | {detour_displacement:+g} m |\n        | Distance travelled (via detour) | {detour_distance:g} m |\n\n        {comparison_note}\n        \"\"\"\n    )\n    return\n\n\n@app.cell\ndef _():\n    mo.md(\"\"\"\n    ## Concept Check\n    \"\"\")\n    return\n\n\n@app.cell\ndef _():\n    q1 = mo.ui.radio(\n        options=[\"Yes\", \"No\"],\n        label=\"If an object ends up back where it started, is its displacement zero?\",\n    )\n    q2 = mo.ui.radio(\n        options=[\n            \"Distance and displacement are always equal\",\n            \"Distance and displacement are equal only for direct, one-way motion\",\n            \"Distance is always smaller than displacement\",\n        ],\n        label=\"Which statement is correct?\",\n    )\n    q3 = mo.ui.radio(\n        options=[\"Position\", \"Displacement\", \"Distance travelled\"],\n        label=\"Which quantity is always anchored to the origin?\",\n    )\n    mo.vstack([q1, q2, q3])\n    return q1, q2, q3\n\n\n@app.cell\ndef _():\n    mo.md(\"\"\"\n    ## Immediate Feedback\n    \"\"\")\n    return\n\n\n@app.cell\ndef _(q1, q2, q3):\n    def _feedback(question, correct_answer, correct_message, incorrect_message):\n        if question.value is None:\n            return \"\"\n        if question.value == correct_answer:\n            return f\"\u2705 {correct_message}\"\n        return f\"\u274c {incorrect_message}\"\n\n    feedback_1 = _feedback(\n        q1,\n        \"Yes\",\n        \"Correct \u2014 displacement depends only on start and end position.\",\n        \"Not quite \u2014 displacement only depends on the initial and final position, \"\n        \"so a return to the start gives \u0394x = 0, even though distance travelled is not zero.\",\n    )\n    feedback_2 = _feedback(\n        q2,\n        \"Distance and displacement are equal only for direct, one-way motion\",\n        \"Correct.\",\n        \"Not quite \u2014 try the detour slider above and compare the two values again.\",\n    )\n    feedback_3 = _feedback(\n        q3,\n        \"Position\",\n        \"Correct \u2014 position is always measured from the origin. \"\n        \"Displacement connects two positions, not the origin.\",\n        \"Not quite \u2014 think about which point the displacement arrow is drawn between \"\n        \"in the Position Explorer above.\",\n    )\n\n    mo.md(\n        f\"\"\"\n        1. {feedback_1}\n        2. {feedback_2}\n        3. {feedback_3}\n        \"\"\"\n    )\n    return\n\n\nif __name__ == \"__main__\":\n    app.run()\n",
+        }),
+        writable: false,
+        configurable: false,
+    });
+</script>
+<marimo-code hidden="">%23%20%2F%2F%2F%20script%0A%23%20requires-python%20%3D%20%22%3E%3D3.12%22%0A%23%20dependencies%20%3D%20%5B%22marimo%3E%3D0.23.16%22%2C%20%22python-calculators%20%40%20..%2Fpublic%2Fwheels%2Fpython_calculators-0.1.0-py3-none-any.whl%22%5D%0A%23%20%2F%2F%2F%0A%0Aimport%20marimo%0A%0A__generated_with%20%3D%20%220.23.16%22%0Aapp%20%3D%20marimo.App(%0A%20%20%20%20width%3D%22medium%22%2C%0A%20%20%20%20app_title%3D%22Displacement%20%E2%80%94%20DHD%20Nexus%20Physics%20Academy%22%2C%0A)%0A%0Awith%20app.setup%3A%0A%20%20%20%20%23%20-----------------------------------------------------------------%0A%20%20%20%20%23%20Repository%20bootstrap%0A%20%20%20%20%23%0A%20%20%20%20%23%20This%20notebook%20lives%20four%20directories%20below%20the%20engineering%20repo%0A%20%20%20%20%23%20root%20(marimo-notebooks%2Fmechanics%2Fkinematics%2Flesson-01-displacement%2F).%0A%20%20%20%20%23%20python_calculators%2F%20lives%20at%20the%20repo%20root%2C%20so%20it%20needs%20to%20be%20on%0A%20%20%20%20%23%20sys.path%20before%20it%20can%20be%20imported%20--%20both%20when%20this%20file%20is%20run%0A%20%20%20%20%23%20via%20%60marimo%20run%60%20%2F%20%60marimo%20edit%60%20and%20when%20it's%20imported%20directly%0A%20%20%20%20%23%20by%20pytest.%0A%20%20%20%20%23%20-----------------------------------------------------------------%0A%20%20%20%20import%20sys%0A%20%20%20%20from%20pathlib%20import%20Path%0A%0A%20%20%20%20_repo_root%20%3D%20Path(__file__).resolve().parents%5B4%5D%0A%20%20%20%20if%20str(_repo_root)%20not%20in%20sys.path%3A%0A%20%20%20%20%20%20%20%20sys.path.insert(0%2C%20str(_repo_root))%0A%0A%20%20%20%20import%20marimo%20as%20mo%0A%0A%20%20%20%20%23%20-----------------------------------------------------------------%0A%20%20%20%20%23%20Brand%20%2F%20accent%20constants%20(DHD%20Nexus%20navy%2Fgold%20palette)%0A%20%20%20%20%23%20-----------------------------------------------------------------%0A%20%20%20%20NAVY%20%3D%20%22%230B1F3A%22%0A%20%20%20%20GOLD%20%3D%20%22%23D4AF37%22%0A%20%20%20%20CYAN%20%3D%20%22%2300E5FF%22%0A%20%20%20%20SLATE%20%3D%20%22%234A5A72%22%0A%0A%20%20%20%20%23%20-----------------------------------------------------------------%0A%20%20%20%20%23%20Calculator%20imports%20--%20the%20single%20authoritative%20source%20for%0A%20%20%20%20%23%20displacement%20mathematics.%20This%20notebook%20does%20not%20recompute%20or%0A%20%20%20%20%23%20duplicate%20any%20of%20this%20arithmetic%20itself.%0A%20%20%20%20%23%20-----------------------------------------------------------------%0A%20%20%20%20from%20python_calculators.mechanics.kinematics.displacement_calculator%20import%20(%0A%20%20%20%20%20%20%20%20calculate_displacement%2C%0A%20%20%20%20%20%20%20%20calculate_distance%2C%0A%20%20%20%20%20%20%20%20direction%2C%0A%20%20%20%20%20%20%20%20vector_notation%2C%0A%20%20%20%20)%0A%0A%20%20%20%20%23%20-----------------------------------------------------------------%0A%20%20%20%20%23%20SVG%20helper%20functions%0A%20%20%20%20%23%20-----------------------------------------------------------------%0A%20%20%20%20def%20render_number_line_svg(%0A%20%20%20%20%20%20%20%20x1%3A%20float%2C%0A%20%20%20%20%20%20%20%20x2%3A%20float%2C%0A%20%20%20%20%20%20%20%20x_min%3A%20float%20%3D%20-10%2C%0A%20%20%20%20%20%20%20%20x_max%3A%20float%20%3D%2010%2C%0A%20%20%20%20%20%20%20%20waypoint%3A%20float%20%7C%20None%20%3D%20None%2C%0A%20%20%20%20%20%20%20%20width%3A%20int%20%3D%20640%2C%0A%20%20%20%20%20%20%20%20height%3A%20int%20%3D%20160%2C%0A%20%20%20%20)%20-%3E%20str%3A%0A%20%20%20%20%20%20%20%20%22%22%22%0A%20%20%20%20%20%20%20%20A%20small%2C%20dependency-free%20SVG%20number%20line%20showing%20the%20initial%0A%20%20%20%20%20%20%20%20and%20final%20position%20(and%2C%20optionally%2C%20a%20detour%20waypoint)%20with%20a%0A%20%20%20%20%20%20%20%20displacement%20arrow%20drawn%20directly%20from%20x1%20to%20x2.%0A%20%20%20%20%20%20%20%20%22%22%22%0A%20%20%20%20%20%20%20%20margin%20%3D%2040%0A%20%20%20%20%20%20%20%20usable_width%20%3D%20width%20-%202%20*%20margin%0A%0A%20%20%20%20%20%20%20%20def%20to_px(x%3A%20float)%20-%3E%20float%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20fraction%20%3D%20(x%20-%20x_min)%20%2F%20(x_max%20-%20x_min)%0A%20%20%20%20%20%20%20%20%20%20%20%20return%20margin%20%2B%20fraction%20*%20usable_width%0A%0A%20%20%20%20%20%20%20%20axis_y%20%3D%20height%20*%200.55%0A%20%20%20%20%20%20%20%20origin_px%20%3D%20to_px(0)%0A%20%20%20%20%20%20%20%20x1_px%20%3D%20to_px(x1)%0A%20%20%20%20%20%20%20%20x2_px%20%3D%20to_px(x2)%0A%0A%20%20%20%20%20%20%20%20ticks%20%3D%20%5B%5D%0A%20%20%20%20%20%20%20%20for%20tick%20in%20range(int(x_min)%2C%20int(x_max)%20%2B%201)%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20tx%20%3D%20to_px(tick)%0A%20%20%20%20%20%20%20%20%20%20%20%20ticks.append(%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20f'%3Cline%20x1%3D%22%7Btx%7D%22%20y1%3D%22%7Baxis_y%20-%206%7D%22%20x2%3D%22%7Btx%7D%22%20y2%3D%22%7Baxis_y%20%2B%206%7D%22%20'%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20f'stroke%3D%22%7BSLATE%7D%22%20stroke-width%3D%221%22%20%2F%3E'%0A%20%20%20%20%20%20%20%20%20%20%20%20)%0A%20%20%20%20%20%20%20%20%20%20%20%20if%20tick%20%25%202%20%3D%3D%200%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20ticks.append(%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20f'%3Ctext%20x%3D%22%7Btx%7D%22%20y%3D%22%7Baxis_y%20%2B%2024%7D%22%20font-size%3D%2211%22%20fill%3D%22%7BSLATE%7D%22%20'%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20f'text-anchor%3D%22middle%22%3E%7Btick%7D%3C%2Ftext%3E'%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20)%0A%20%20%20%20%20%20%20%20ticks_svg%20%3D%20%22%22.join(ticks)%0A%0A%20%20%20%20%20%20%20%20waypoint_svg%20%3D%20%22%22%0A%20%20%20%20%20%20%20%20if%20waypoint%20is%20not%20None%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20wp_px%20%3D%20to_px(waypoint)%0A%20%20%20%20%20%20%20%20%20%20%20%20waypoint_svg%20%3D%20(%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20f'%3Ccircle%20cx%3D%22%7Bwp_px%7D%22%20cy%3D%22%7Baxis_y%7D%22%20r%3D%226%22%20fill%3D%22none%22%20'%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20f'stroke%3D%22%7BGOLD%7D%22%20stroke-width%3D%222%22%20%2F%3E'%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20f'%3Ctext%20x%3D%22%7Bwp_px%7D%22%20y%3D%22%7Baxis_y%20-%2016%7D%22%20font-size%3D%2212%22%20fill%3D%22%7BGOLD%7D%22%20'%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20f'text-anchor%3D%22middle%22%3Edetour%3C%2Ftext%3E'%0A%20%20%20%20%20%20%20%20%20%20%20%20)%0A%0A%20%20%20%20%20%20%20%20arrow_id%20%3D%20%22displacement-arrowhead%22%0A%0A%20%20%20%20%20%20%20%20svg%20%3D%20f%22%22%22%0A%20%20%20%20%3Csvg%20viewBox%3D%220%200%20%7Bwidth%7D%20%7Bheight%7D%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%0A%20%20%20%20%20%20%20%20%20style%3D%22background%3A%7BNAVY%7D%3B%20border-radius%3A8px%3B%22%3E%0A%20%20%20%20%20%20%3Cdefs%3E%0A%20%20%20%20%20%20%20%20%3Cmarker%20id%3D%22%7Barrow_id%7D%22%20markerWidth%3D%2210%22%20markerHeight%3D%2210%22%20refX%3D%228%22%20refY%3D%223%22%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20orient%3D%22auto%22%20markerUnits%3D%22strokeWidth%22%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cpath%20d%3D%22M0%2C0%20L0%2C6%20L9%2C3%20z%22%20fill%3D%22%7BCYAN%7D%22%20%2F%3E%0A%20%20%20%20%20%20%20%20%3C%2Fmarker%3E%0A%20%20%20%20%20%20%3C%2Fdefs%3E%0A%0A%20%20%20%20%20%20%3Cline%20x1%3D%22%7Bmargin%7D%22%20y1%3D%22%7Baxis_y%7D%22%20x2%3D%22%7Bwidth%20-%20margin%7D%22%20y2%3D%22%7Baxis_y%7D%22%0A%20%20%20%20%20%20%20%20%20%20%20%20stroke%3D%22%7BSLATE%7D%22%20stroke-width%3D%222%22%20%2F%3E%0A%20%20%20%20%20%20%7Bticks_svg%7D%0A%0A%20%20%20%20%20%20%3Ccircle%20cx%3D%22%7Borigin_px%7D%22%20cy%3D%22%7Baxis_y%7D%22%20r%3D%224%22%20fill%3D%22%7BGOLD%7D%22%20%2F%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%22%7Borigin_px%7D%22%20y%3D%22%7Baxis_y%20%2B%2024%7D%22%20font-size%3D%2211%22%20fill%3D%22%7BGOLD%7D%22%0A%20%20%20%20%20%20%20%20%20%20%20%20text-anchor%3D%22middle%22%3E0%3C%2Ftext%3E%0A%0A%20%20%20%20%20%20%7Bwaypoint_svg%7D%0A%0A%20%20%20%20%20%20%3Cline%20x1%3D%22%7Bx1_px%7D%22%20y1%3D%22%7Baxis_y%20-%2028%7D%22%20x2%3D%22%7Bx2_px%7D%22%20y2%3D%22%7Baxis_y%20-%2028%7D%22%0A%20%20%20%20%20%20%20%20%20%20%20%20stroke%3D%22%7BCYAN%7D%22%20stroke-width%3D%222.5%22%20marker-end%3D%22url(%23%7Barrow_id%7D)%22%20%2F%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%22%7B(x1_px%20%2B%20x2_px)%20%2F%202%7D%22%20y%3D%22%7Baxis_y%20-%2036%7D%22%20font-size%3D%2213%22%20fill%3D%22%7BCYAN%7D%22%0A%20%20%20%20%20%20%20%20%20%20%20%20text-anchor%3D%22middle%22%3E%26%23916%3Bx%3C%2Ftext%3E%0A%0A%20%20%20%20%20%20%3Ccircle%20cx%3D%22%7Bx1_px%7D%22%20cy%3D%22%7Baxis_y%7D%22%20r%3D%226%22%20fill%3D%22%7BNAVY%7D%22%20stroke%3D%22%23FFFFFF%22%20stroke-width%3D%222%22%20%2F%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%22%7Bx1_px%7D%22%20y%3D%22%7Baxis_y%20-%2044%7D%22%20font-size%3D%2212%22%20fill%3D%22%23FFFFFF%22%0A%20%20%20%20%20%20%20%20%20%20%20%20text-anchor%3D%22middle%22%3Ex%26%238321%3B%20%3D%20%7Bx1%3Ag%7D%3C%2Ftext%3E%0A%0A%20%20%20%20%20%20%3Ccircle%20cx%3D%22%7Bx2_px%7D%22%20cy%3D%22%7Baxis_y%7D%22%20r%3D%226%22%20fill%3D%22%7BCYAN%7D%22%20stroke%3D%22%23FFFFFF%22%20stroke-width%3D%222%22%20%2F%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%22%7Bx2_px%7D%22%20y%3D%22%7Baxis_y%20-%2044%7D%22%20font-size%3D%2212%22%20fill%3D%22%23FFFFFF%22%0A%20%20%20%20%20%20%20%20%20%20%20%20text-anchor%3D%22middle%22%3Ex%26%238322%3B%20%3D%20%7Bx2%3Ag%7D%3C%2Ftext%3E%0A%20%20%20%20%3C%2Fsvg%3E%0A%20%20%20%20%22%22%22.strip()%0A%0A%20%20%20%20%20%20%20%20return%20svg%0A%0A%0A%40app.cell%0Adef%20_()%3A%0A%20%20%20%20mo.md(%0A%20%20%20%20%20%20%20%20f%22%22%22%0A%20%20%20%20%20%20%20%20%3Cdiv%20style%3D%22background%3A%7BNAVY%7D%3B%20color%3A%23FFFFFF%3B%20padding%3A1.5rem%202rem%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20border-radius%3A8px%3B%20border-left%3A6px%20solid%20%7BGOLD%7D%3B%22%3E%0A%20%20%20%20%20%20%20%20%3Ch1%20style%3D%22margin%3A0%3B%20color%3A%7BGOLD%7D%3B%22%3EDHD%20Nexus%20Physics%20Academy%3C%2Fh1%3E%0A%20%20%20%20%20%20%20%20%3Ch2%20style%3D%22margin%3A0.25rem%200%200%200%3B%20font-weight%3A400%3B%22%3ELesson%2001%20%E2%80%94%20Displacement%3C%2Fh2%3E%0A%20%20%20%20%20%20%20%20%3Cp%20style%3D%22margin-top%3A1rem%3B%20color%3A%23C9D3E0%3B%22%3E%0A%20%20%20%20%20%20%20%20This%20notebook%20is%20the%20computational%20companion%20to%20the%20Displacement%0A%20%20%20%20%20%20%20%20lecture%20and%20Web%20Lab.%20Use%20the%20sliders%20below%20to%20move%20an%20object%20along%0A%20%20%20%20%20%20%20%20a%20number%20line%20and%20watch%20%3Cb%3Eposition%3C%2Fb%3E%2C%20%3Cb%3Edisplacement%3C%2Fb%3E%2C%20and%0A%20%20%20%20%20%20%20%20%3Cb%3Edistance%20travelled%3C%2Fb%3E%20update%20live.%0A%20%20%20%20%20%20%20%20%3C%2Fp%3E%0A%20%20%20%20%20%20%20%20%3C%2Fdiv%3E%0A%20%20%20%20%20%20%20%20%22%22%22%0A%20%20%20%20)%0A%20%20%20%20return%0A%0A%0A%40app.cell%0Adef%20_()%3A%0A%20%20%20%20mo.md(%22%22%22%0A%20%20%20%20%23%23%20Position%20Explorer%0A%20%20%20%20%22%22%22)%0A%20%20%20%20return%0A%0A%0A%40app.cell%0Adef%20_()%3A%0A%20%20%20%20x1_slider%20%3D%20mo.ui.slider(%0A%20%20%20%20%20%20%20%20start%3D-10%2C%20stop%3D10%2C%20step%3D1%2C%20value%3D-4%2C%20label%3D%22Initial%20position%20x%E2%82%81%20(m)%22%0A%20%20%20%20)%0A%20%20%20%20x2_slider%20%3D%20mo.ui.slider(%0A%20%20%20%20%20%20%20%20start%3D-10%2C%20stop%3D10%2C%20step%3D1%2C%20value%3D6%2C%20label%3D%22Final%20position%20x%E2%82%82%20(m)%22%0A%20%20%20%20)%0A%20%20%20%20mo.hstack(%5Bx1_slider%2C%20x2_slider%5D)%0A%20%20%20%20return%20x1_slider%2C%20x2_slider%0A%0A%0A%40app.cell%0Adef%20_(x1_slider%2C%20x2_slider)%3A%0A%20%20%20%20mo.Html(render_number_line_svg(x1_slider.value%2C%20x2_slider.value))%0A%20%20%20%20return%0A%0A%0A%40app.cell%0Adef%20_()%3A%0A%20%20%20%20mo.md(%22%22%22%0A%20%20%20%20%23%23%20Displacement%20Calculation%0A%20%20%20%20%22%22%22)%0A%20%20%20%20return%0A%0A%0A%40app.cell%0Adef%20_(x1_slider%2C%20x2_slider)%3A%0A%20%20%20%20displacement%20%3D%20calculate_displacement(x1_slider.value%2C%20x2_slider.value)%0A%20%20%20%20distance%20%3D%20calculate_distance(x1_slider.value%2C%20x2_slider.value)%0A%20%20%20%20motion_direction%20%3D%20direction(x1_slider.value%2C%20x2_slider.value)%0A%20%20%20%20notation%20%3D%20vector_notation(x1_slider.value%2C%20x2_slider.value)%0A%20%20%20%20return%20displacement%2C%20distance%2C%20motion_direction%2C%20notation%0A%0A%0A%40app.cell%0Adef%20_(%0A%20%20%20%20displacement%2C%0A%20%20%20%20distance%2C%0A%20%20%20%20motion_direction%2C%0A%20%20%20%20notation%2C%0A%20%20%20%20x1_slider%2C%0A%20%20%20%20x2_slider%2C%0A)%3A%0A%20%20%20%20mo.md(%0A%20%20%20%20%20%20%20%20f%22%22%22%0A%20%20%20%20%20%20%20%20%7C%20Quantity%20%7C%20Value%20%7C%0A%20%20%20%20%20%20%20%20%7C---%7C---%7C%0A%20%20%20%20%20%20%20%20%7C%20Initial%20position%2C%20x%E2%82%81%20%7C%20%7Bx1_slider.value%3Ag%7D%20m%20%7C%0A%20%20%20%20%20%20%20%20%7C%20Final%20position%2C%20x%E2%82%82%20%7C%20%7Bx2_slider.value%3Ag%7D%20m%20%7C%0A%20%20%20%20%20%20%20%20%7C%20Displacement%2C%20%CE%94x%20%7C%20%7Bdisplacement%3A%2Bg%7D%20m%20%7C%0A%20%20%20%20%20%20%20%20%7C%20Distance%20travelled%20%7C%20%7Bdistance%3Ag%7D%20m%20%7C%0A%20%20%20%20%20%20%20%20%7C%20Direction%20%7C%20%7Bmotion_direction%7D%20%7C%0A%0A%20%20%20%20%20%20%20%20%7Bnotation%7D%0A%20%20%20%20%20%20%20%20%22%22%22%0A%20%20%20%20)%0A%20%20%20%20return%0A%0A%0A%40app.cell%0Adef%20_()%3A%0A%20%20%20%20mo.md(%22%22%22%0A%20%20%20%20%23%23%20Distance%20vs%20Displacement%0A%0A%20%20%20%20Displacement%20depends%20only%20on%20where%20you%20start%20and%20where%20you%20end%0A%20%20%20%20up.%20Distance%20travelled%20depends%20on%20the%20whole%20path.%20Drag%20the%0A%20%20%20%20**detour**%20slider%20below%20to%20send%20the%20object%20via%20an%20intermediate%0A%20%20%20%20point%20between%20x%E2%82%81%20and%20x%E2%82%82%2C%20and%20watch%20the%20displacement%20stay%20fixed%0A%20%20%20%20while%20the%20distance%20travelled%20changes.%0A%0A%20%20%20%20The%20detour%20distance%20is%20computed%20by%20calling%20%60calculate_distance()%60%0A%20%20%20%20once%20for%20each%20leg%20of%20the%20path%20(x%E2%82%81%20%E2%86%92%20detour%2C%20detour%20%E2%86%92%20x%E2%82%82)%20and%0A%20%20%20%20summing%20the%20two%20legs%20%E2%80%94%20no%20new%20displacement%2Fdistance%20arithmetic%20is%0A%20%20%20%20introduced%20here.%0A%20%20%20%20%22%22%22)%0A%20%20%20%20return%0A%0A%0A%40app.cell%0Adef%20_(x1_slider%2C%20x2_slider)%3A%0A%20%20%20%20detour_default%20%3D%20round((x1_slider.value%20%2B%20x2_slider.value)%20%2F%202)%0A%20%20%20%20detour_slider%20%3D%20mo.ui.slider(%0A%20%20%20%20%20%20%20%20start%3D-10%2C%20stop%3D10%2C%20step%3D1%2C%20value%3Ddetour_default%2C%20label%3D%22Detour%20waypoint%20(m)%22%0A%20%20%20%20)%0A%20%20%20%20detour_slider%0A%20%20%20%20return%20(detour_slider%2C)%0A%0A%0A%40app.cell%0Adef%20_(detour_slider%2C%20x1_slider%2C%20x2_slider)%3A%0A%20%20%20%20detour_displacement%20%3D%20calculate_displacement(x1_slider.value%2C%20x2_slider.value)%0A%20%20%20%20detour_distance%20%3D%20calculate_distance(x1_slider.value%2C%20detour_slider.value)%20%2B%20calculate_distance(%0A%20%20%20%20%20%20%20%20detour_slider.value%2C%20x2_slider.value%0A%20%20%20%20)%0A%20%20%20%20return%20detour_displacement%2C%20detour_distance%0A%0A%0A%40app.cell%0Adef%20_(detour_slider%2C%20x1_slider%2C%20x2_slider)%3A%0A%20%20%20%20mo.Html(%0A%20%20%20%20%20%20%20%20render_number_line_svg(%0A%20%20%20%20%20%20%20%20%20%20%20%20x1_slider.value%2C%20x2_slider.value%2C%20waypoint%3Ddetour_slider.value%0A%20%20%20%20%20%20%20%20)%0A%20%20%20%20)%0A%20%20%20%20return%0A%0A%0A%40app.cell%0Adef%20_(detour_displacement%2C%20detour_distance)%3A%0A%20%20%20%20is_direct%20%3D%20detour_distance%20%3D%3D%20abs(detour_displacement)%0A%20%20%20%20comparison_note%20%3D%20(%0A%20%20%20%20%20%20%20%20%22Direct%20path%3A%20distance%20travelled%20equals%20the%20magnitude%20of%20the%20displacement.%22%0A%20%20%20%20%20%20%20%20if%20is_direct%0A%20%20%20%20%20%20%20%20else%20%22Detour%3A%20distance%20travelled%20is%20**greater**%20than%20the%20magnitude%20of%20the%20displacement.%22%0A%20%20%20%20)%0A%20%20%20%20mo.md(%0A%20%20%20%20%20%20%20%20f%22%22%22%0A%20%20%20%20%20%20%20%20%7C%20Quantity%20%7C%20Value%20%7C%0A%20%20%20%20%20%20%20%20%7C---%7C---%7C%0A%20%20%20%20%20%20%20%20%7C%20Displacement%2C%20%CE%94x%20%7C%20%7Bdetour_displacement%3A%2Bg%7D%20m%20%7C%0A%20%20%20%20%20%20%20%20%7C%20Distance%20travelled%20(via%20detour)%20%7C%20%7Bdetour_distance%3Ag%7D%20m%20%7C%0A%0A%20%20%20%20%20%20%20%20%7Bcomparison_note%7D%0A%20%20%20%20%20%20%20%20%22%22%22%0A%20%20%20%20)%0A%20%20%20%20return%0A%0A%0A%40app.cell%0Adef%20_()%3A%0A%20%20%20%20mo.md(%22%22%22%0A%20%20%20%20%23%23%20Concept%20Check%0A%20%20%20%20%22%22%22)%0A%20%20%20%20return%0A%0A%0A%40app.cell%0Adef%20_()%3A%0A%20%20%20%20q1%20%3D%20mo.ui.radio(%0A%20%20%20%20%20%20%20%20options%3D%5B%22Yes%22%2C%20%22No%22%5D%2C%0A%20%20%20%20%20%20%20%20label%3D%22If%20an%20object%20ends%20up%20back%20where%20it%20started%2C%20is%20its%20displacement%20zero%3F%22%2C%0A%20%20%20%20)%0A%20%20%20%20q2%20%3D%20mo.ui.radio(%0A%20%20%20%20%20%20%20%20options%3D%5B%0A%20%20%20%20%20%20%20%20%20%20%20%20%22Distance%20and%20displacement%20are%20always%20equal%22%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%22Distance%20and%20displacement%20are%20equal%20only%20for%20direct%2C%20one-way%20motion%22%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%22Distance%20is%20always%20smaller%20than%20displacement%22%2C%0A%20%20%20%20%20%20%20%20%5D%2C%0A%20%20%20%20%20%20%20%20label%3D%22Which%20statement%20is%20correct%3F%22%2C%0A%20%20%20%20)%0A%20%20%20%20q3%20%3D%20mo.ui.radio(%0A%20%20%20%20%20%20%20%20options%3D%5B%22Position%22%2C%20%22Displacement%22%2C%20%22Distance%20travelled%22%5D%2C%0A%20%20%20%20%20%20%20%20label%3D%22Which%20quantity%20is%20always%20anchored%20to%20the%20origin%3F%22%2C%0A%20%20%20%20)%0A%20%20%20%20mo.vstack(%5Bq1%2C%20q2%2C%20q3%5D)%0A%20%20%20%20return%20q1%2C%20q2%2C%20q3%0A%0A%0A%40app.cell%0Adef%20_()%3A%0A%20%20%20%20mo.md(%22%22%22%0A%20%20%20%20%23%23%20Immediate%20Feedback%0A%20%20%20%20%22%22%22)%0A%20%20%20%20return%0A%0A%0A%40app.cell%0Adef%20_(q1%2C%20q2%2C%20q3)%3A%0A%20%20%20%20def%20_feedback(question%2C%20correct_answer%2C%20correct_message%2C%20incorrect_message)%3A%0A%20%20%20%20%20%20%20%20if%20question.value%20is%20None%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20return%20%22%22%0A%20%20%20%20%20%20%20%20if%20question.value%20%3D%3D%20correct_answer%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20return%20f%22%E2%9C%85%20%7Bcorrect_message%7D%22%0A%20%20%20%20%20%20%20%20return%20f%22%E2%9D%8C%20%7Bincorrect_message%7D%22%0A%0A%20%20%20%20feedback_1%20%3D%20_feedback(%0A%20%20%20%20%20%20%20%20q1%2C%0A%20%20%20%20%20%20%20%20%22Yes%22%2C%0A%20%20%20%20%20%20%20%20%22Correct%20%E2%80%94%20displacement%20depends%20only%20on%20start%20and%20end%20position.%22%2C%0A%20%20%20%20%20%20%20%20%22Not%20quite%20%E2%80%94%20displacement%20only%20depends%20on%20the%20initial%20and%20final%20position%2C%20%22%0A%20%20%20%20%20%20%20%20%22so%20a%20return%20to%20the%20start%20gives%20%CE%94x%20%3D%200%2C%20even%20though%20distance%20travelled%20is%20not%20zero.%22%2C%0A%20%20%20%20)%0A%20%20%20%20feedback_2%20%3D%20_feedback(%0A%20%20%20%20%20%20%20%20q2%2C%0A%20%20%20%20%20%20%20%20%22Distance%20and%20displacement%20are%20equal%20only%20for%20direct%2C%20one-way%20motion%22%2C%0A%20%20%20%20%20%20%20%20%22Correct.%22%2C%0A%20%20%20%20%20%20%20%20%22Not%20quite%20%E2%80%94%20try%20the%20detour%20slider%20above%20and%20compare%20the%20two%20values%20again.%22%2C%0A%20%20%20%20)%0A%20%20%20%20feedback_3%20%3D%20_feedback(%0A%20%20%20%20%20%20%20%20q3%2C%0A%20%20%20%20%20%20%20%20%22Position%22%2C%0A%20%20%20%20%20%20%20%20%22Correct%20%E2%80%94%20position%20is%20always%20measured%20from%20the%20origin.%20%22%0A%20%20%20%20%20%20%20%20%22Displacement%20connects%20two%20positions%2C%20not%20the%20origin.%22%2C%0A%20%20%20%20%20%20%20%20%22Not%20quite%20%E2%80%94%20think%20about%20which%20point%20the%20displacement%20arrow%20is%20drawn%20between%20%22%0A%20%20%20%20%20%20%20%20%22in%20the%20Position%20Explorer%20above.%22%2C%0A%20%20%20%20)%0A%0A%20%20%20%20mo.md(%0A%20%20%20%20%20%20%20%20f%22%22%22%0A%20%20%20%20%20%20%20%201.%20%7Bfeedback_1%7D%0A%20%20%20%20%20%20%20%202.%20%7Bfeedback_2%7D%0A%20%20%20%20%20%20%20%203.%20%7Bfeedback_3%7D%0A%20%20%20%20%20%20%20%20%22%22%22%0A%20%20%20%20)%0A%20%20%20%20return%0A%0A%0Aif%20__name__%20%3D%3D%20%22__main__%22%3A%0A%20%20%20%20app.run()%0A</marimo-code></head>
+  <body>
+    <div id="root"></div>
+    <script data-marimo="true">
+      Object.defineProperty(window, "__MARIMO_MOUNT_CONFIG__", {
+        value: Object.freeze({
+            "filename": "notebook.py",
+            "cwd": "",
+            "lspWorkspace": null,
+            "mode": "read",
+            "version": "0.23.16",
+            "serverToken": "unused",
+            "config": {"ai": {"custom_providers": {}, "enabled": true, "models": {"custom_models": [], "displayed_models": []}}, "completion": {"activate_on_typing": true, "auto_close_pairs": true, "copilot": false, "signature_hint_on_typing": false}, "diagnostics": {"sql_linter": true}, "display": {"cell_output": "below", "code_editor_font_size": 14, "dataframes": "rich", "default_table_max_columns": 50, "default_table_page_size": 10, "default_width": "medium", "reference_highlighting": true, "theme": "light"}, "formatting": {"line_length": 79}, "keymap": {"overrides": {}, "preset": "default"}, "language_servers": {"pylsp": {"enable_flake8": false, "enable_mypy": true, "enable_pydocstyle": false, "enable_pyflakes": false, "enable_pylint": false, "enable_ruff": true, "enabled": false}}, "mcp": {"mcpServers": {}, "presets": []}, "package_management": {"manager": "pip"}, "runtime": {"auto_instantiate": false, "auto_reload": "off", "default_csv_encoding": "utf-8", "default_sql_output": "auto", "on_cell_change": "autorun", "output_max_bytes": 8000000, "reactive_tests": true, "show_tracebacks": false, "std_stream_max_bytes": 1000000, "watcher_on_save": "lazy"}, "save": {"autosave": "off", "autosave_delay": 1000, "format_on_save": false}, "server": {"browser": "default", "follow_symlink": false}, "snippets": {"custom_paths": [], "include_default_snippets": true}},
+            "configOverrides": {},
+            "appConfig": {"app_title": "Displacement \u2014 DHD Nexus Physics Academy", "sql_output": "auto", "width": "medium"},
+            "view": {"showAppCode": false},
+            "notebook": null,
+            "session": null,
+            "runtimeConfig": null,
+        }),
+        writable: false,
+        configurable: false,
+      });
+    </script>
+  </body>
+</html>

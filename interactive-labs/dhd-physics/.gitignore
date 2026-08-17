@@ -12,6 +12,10 @@ dist
 dist-ssr
 *.local
 
+# Synced at build time from marimo-notebooks/.../web/ (see
+# scripts/sync-marimo-lab.mjs) -- not authored in this app.
+public/marimo/
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

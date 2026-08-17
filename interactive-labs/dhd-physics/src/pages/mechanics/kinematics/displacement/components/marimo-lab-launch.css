@@ -66,6 +66,14 @@
   color: var(--mll-text);
 }
 
+.mll-status-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  color: var(--mll-text);
+}
+
 .mll-launch-fallback,
 .mll-embed-wrap {
   display: flex;

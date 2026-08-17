@@ -1,0 +1,18 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "python-calculators"
+version = "0.1.0"
+description = "DHD Nexus reusable mathematics engine (Physics Academy calculators)"
+requires-python = ">=3.11"
+# Intentionally zero third-party dependencies: this package must be
+# installable inside Pyodide (browser WASM) via micropip as well as in
+# any normal CPython environment, and it must remain the single
+# mathematical source of truth for both -- adding a dependency here
+# would need to also be WASM-compatible.
+dependencies = []
+
+[tool.setuptools.packages.find]
+include = ["python_calculators*"]

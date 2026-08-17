@@ -6,6 +6,7 @@ import Home from "../pages/Home";
 import PhysicsAcademy from "../pages/physics-academy";
 
 import Displacement from "../pages/mechanics/kinematics/displacement";
+import DisplacementLabRoute from "../pages/mechanics/kinematics/displacement/lab";
 import Velocity from "../pages/mechanics/kinematics/velocity";
 import Acceleration from "../pages/mechanics/kinematics/acceleration";
 import MotionGraphs from "../pages/mechanics/kinematics/motion-graphs";
@@ -41,6 +42,14 @@ export default function AppRouter() {
       <Route
         path="/mechanics/kinematics/displacement"
         element={<Displacement />}
+      />
+
+      {/* Milestone B9.4.3 — full-screen computational lab, distinct
+          from the teaching page above. Not wrapped in AcademyLayout:
+          this is a launch/redirect screen, not a lesson page. */}
+      <Route
+        path="/mechanics/kinematics/displacement/lab"
+        element={<DisplacementLabRoute />}
       />
 
       <Route path="/mechanics/kinematics/velocity" element={<Velocity />} />
